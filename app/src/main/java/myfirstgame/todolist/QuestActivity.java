@@ -8,12 +8,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class QuestActivity extends MyMenu {
+
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,19 @@ public class QuestActivity extends MyMenu {
                 return true;
             }
         });
+
+
+        Button button = findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent dbmanager = new Intent(v.getContext(), AndroidDatabaseManager.class);
+                startActivity(dbmanager);
+            }
+        });
+
+
     }
 
     public void onQuestAddButtonClicked(View button){

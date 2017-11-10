@@ -16,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="AndroidDatabaseManager" />
         <activity android:name=".QuestViewAdapter" />
         <activity android:name=".AddQuestActivity" />
         <activity android:name=".BeatenQuestActivity" />

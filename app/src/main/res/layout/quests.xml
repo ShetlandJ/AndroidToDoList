@@ -42,4 +42,12 @@
         app:itemTextColor="@color/colorAccent"
         app:menu="@menu/bottom_navigation_main" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/questList"
+        android:layout_alignParentTop="true"
+        android:text="Button" />
+
 </RelativeLayout>
