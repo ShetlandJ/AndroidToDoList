@@ -14,6 +14,7 @@ public class BeatenQuestActivity extends MyMenu {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beaten_quest);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {
@@ -23,10 +24,13 @@ public class BeatenQuestActivity extends MyMenu {
                 {
                     case R.id.menu_beaten:
                         onButtonClicked(R.id.menu_beaten);
+                        break;
                     case R.id.menu_quests:
                         onButtonClicked(R.id.menu_quests);
+                        break;
                     case R.id.menu_profile:
-                        onButtonClicked(R.id.menu_quests);
+                        onButtonClicked(R.id.menu_profile);
+                        break;
                 }
                 return true;
             }

@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import java.util.Date;
 
-public class AddQuestActivity extends MyMenu {
+public class AddQuestActivity extends AppCompatActivity {
 
     EditText editName;
     EditText editDesc;
@@ -32,20 +32,21 @@ public class AddQuestActivity extends MyMenu {
         addBtn = findViewById(R.id.addQuestBtn);
     }
 
-    public void addMovie(View button){
+    public void addQuest(View button){
         DBHelper dbHelper = new DBHelper(this);
         String name = editName.getText().toString();
         String description = editDesc.getText().toString();
         Integer expValue = Integer.parseInt(editExpValue.getText().toString());
-        String category = editCategory.getText().toString();
+        Integer category = Integer.parseInt(editCategory.getText().toString());
         String date = editDate.getText().toString();
 
-
-        dbHelper.save(name, description, expValue, category, date);
+        Quest quest = new Quest(name, description, expValue, category, date);
+        quest.save(dbHelper);
 
         Intent intent = new Intent(this, QuestActivity.class);
         startActivity(intent);
     }
+
 
 
 }

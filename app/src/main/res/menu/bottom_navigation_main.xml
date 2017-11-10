@@ -5,18 +5,19 @@
 
 
     <item
+        android:id="@+id/menu_beaten"
+        android:enabled="false"
+        android:title="@string/menu_beaten"
+        android:icon="@drawable/success"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
         android:id="@+id/menu_quests"
         android:enabled="true"
         android:icon="@drawable/papyrus"
         android:title="@string/menu_quests"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/menu_beaten"
-        android:enabled="true"
-        android:title="@string/menu_beaten"
-        android:icon="@drawable/success"
-        app:showAsAction="ifRoom"
-        />
 
     <item
         android:id="@+id/menu_profile"

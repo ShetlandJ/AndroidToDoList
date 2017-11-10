@@ -19,9 +19,10 @@ public class QuestActivity extends MyMenu {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quests);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         DBHelper dbHelper = new DBHelper(this);
-        ArrayList<Quest> questList = dbHelper.all();
+        ArrayList<Quest> questList = Quest.all(dbHelper);
 
         QuestViewAdapter questAdapter = new QuestViewAdapter(this, questList);
         ListView listView = findViewById(R.id.questList);
