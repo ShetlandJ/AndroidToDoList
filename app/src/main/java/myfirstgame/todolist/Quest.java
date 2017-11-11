@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_CATEGORY;
+import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_COMPLETED;
 import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_DATE;
 import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_DESC;
 import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_EXP;
@@ -25,7 +26,7 @@ public class Quest {
     private String description;
     private Integer expValue;
     private Integer category;
-    private boolean isCompleted;
+    private int isCompleted;
     private String date;
     private int id;
 
@@ -34,7 +35,7 @@ public class Quest {
         this.description = description;
         this.expValue = expValue;
         this.category = category;
-        this.isCompleted = false;
+        this.isCompleted = 0;
         this.date = date;
     }
 
@@ -44,7 +45,7 @@ public class Quest {
         this.description = description;
         this.expValue = expValue;
         this.category = category;
-        this.isCompleted = false;
+        this.isCompleted = 0;
         this.date = date;
     }
 
@@ -66,7 +67,7 @@ public class Quest {
         return category;
     }
 
-    public boolean isCompleted() {
+    public int isCompleted() {
         return isCompleted;
     }
 
@@ -92,7 +93,7 @@ public class Quest {
         this.category = category;
     }
 
-    public void setCompleted(boolean completed) {
+    public void setCompleted(int completed) {
         isCompleted = completed;
     }
 
@@ -133,6 +134,51 @@ public class Quest {
         return quests;
     }
 
+    public static ArrayList<Quest> allComplete(DBHelper dbHelper){
+        ArrayList<Quest> quests = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = " WHERE completed = ?";
+        Cursor cursor = db.rawQuery("SELECT * FROM " + QUEST_TABLE_NAME + query , new String[] {"1"});
+        while (cursor.moveToNext()) {
+            Integer id = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_ID));
+            String name = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_NAME));
+            String description = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DESC));
+            Integer expValue = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_EXP));
+            Integer category = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_CATEGORY));
+            String date = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DATE));
+
+
+            Quest quest = new Quest(id, name, description, expValue, category, date);
+            quests.add(quest);
+        }
+        cursor.close();
+        return quests;
+    }
+
+    public static ArrayList<Quest> allIncomplete(DBHelper dbHelper){
+        ArrayList<Quest> quests = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = " WHERE completed = ?";
+        Cursor cursor = db.rawQuery("SELECT * FROM " + QUEST_TABLE_NAME + query , new String[] {"0"});
+        while (cursor.moveToNext()) {
+            Integer id = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_ID));
+            String name = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_NAME));
+            String description = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DESC));
+            Integer expValue = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_EXP));
+            Integer category = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_CATEGORY));
+            String date = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DATE));
+
+
+            Quest quest = new Quest(id, name, description, expValue, category, date);
+            quests.add(quest);
+        }
+        cursor.close();
+        return quests;
+    }
+
+//    rawQuery("SELECT id, name FROM people WHERE name = ? AND id = ?", new String[] {"David", "2"});
+
+
     public static boolean deleteAll(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL("DELETE FROM " + QUEST_TABLE_NAME);
@@ -147,4 +193,20 @@ public class Quest {
         return true;
     }
 
+    public void update(DBHelper dbHelper) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        if (db == null) {
+            return;
+        }
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(QUEST_COLUMN_NAME, name);
+        contentValues.put(QUEST_COLUMN_DESC, description);
+        contentValues.put(QUEST_COLUMN_EXP, expValue);
+        contentValues.put(QUEST_COLUMN_CATEGORY, category);
+        contentValues.put(QUEST_COLUMN_COMPLETED, isCompleted);
+        contentValues.put(QUEST_COLUMN_DATE, date);
+
+        db.update(QUEST_TABLE_NAME, contentValues, QUEST_COLUMN_ID+"="+id, null);
+        db.close();
+    }
 }

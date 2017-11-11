@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/menu_beaten"
-        android:enabled="false"
+        android:enabled="true"
         android:title="@string/menu_beaten"
         android:icon="@drawable/success"
         app:showAsAction="ifRoom"

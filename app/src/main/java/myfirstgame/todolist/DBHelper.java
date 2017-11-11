@@ -1,15 +1,13 @@
 package myfirstgame.todolist;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
-import java.sql.Date;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -19,7 +17,7 @@ import java.util.HashMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test3.db";
+    public static final String DATABASE_NAME = "test16.db";
 
     //    Category table
 
@@ -37,6 +35,17 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String QUEST_COLUMN_EXP = "expValue";
     public static final String QUEST_COLUMN_CATEGORY = "category";
     public static final String QUEST_COLUMN_DATE = "date";
+    public static final String QUEST_COLUMN_COMPLETED = "completed";
+
+    //    Profile table
+    public static final String PROFILE_TABLE_NAME = "users";
+    public static final String PROFILE_COLUMN_ID = "id";
+    public static final String PROFILE_COLUMN_NAME = "name";
+    public static final String PROFILE_COLUMN_STRENGTH_EXP = "strength_exp";
+    public static final String PROFILE_COLUMN_STAMINA_EXP = "stamina_exp";
+    public static final String PROFILE_COLUMN_INTELLIGENCE_EXP = "intelligence_exp";
+    public static final String PROFILE_COLUMN_SOCIAL_EXP = "social_exp";
+    public static final String PROFILE_COLUMN_LEVEL = "level";
 
     private HashMap hp;
 
@@ -46,16 +55,34 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE " + CATEGORY_TABLE_NAME + "(id INTEGER primary key autoincrement, name TEXT, exp INTEGER, level INTEGER )");
-        db.execSQL("CREATE TABLE " + QUEST_TABLE_NAME + "(id INTEGER primary key autoincrement, name TEXT, description TEXT, expValue INTEGER, category INTEGER, FOREIGN KEY(category) REFERENCES categories(_ID), date TEXT)");
+        setForeignKeyConstraintsEnabled(db);
+
+        db.execSQL("CREATE TABLE " + PROFILE_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, strength_exp INTEGER, stamina_exp INTEGER, intelligence_exp INTEGER, social_exp INTEGER, level INTEGER )");
+
+        db.execSQL("CREATE TABLE " + CATEGORY_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, exp INTEGER, level INTEGER )");
+        db.execSQL("CREATE TABLE " + QUEST_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, description TEXT, expValue INTEGER, date TEXT, completed INTEGER DEFAULT 0, category INTEGER NOT NULL, FOREIGN KEY (category) REFERENCES '+CATEGORY_TABLE_NAME+' (id))");
 
         db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Strength', 0, 0 );");
         db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Stamina', 0, 0 );");
         db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Intelligence', 0, 0 );");
         db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Social', 0, 0 );");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'category', 'date') VALUES ('Gym', 'Weightlifting down The Gym', '300', '1', '25/05/2017');");
+
+        db.execSQL("INSERT INTO " + PROFILE_TABLE_NAME + "('name', 'strength_exp', 'stamina_exp', 'intelligence_exp', 'social_exp', 'level') VALUES ('James', 0, 0, 0, 0, 1 );");
 
 
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Shopping', 'going shopping', '50', '24/05/2017', '1', '4');");
 
     }
 
@@ -63,6 +90,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CATEGORY_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + QUEST_TABLE_NAME);
         onCreate(db);
+    }
+
+    private static void setForeignKeyConstraintsEnabled(@NonNull SQLiteDatabase db) {
+        if (!db.isReadOnly()) {
+            db.execSQL("PRAGMA foreign_keys=1;");
+        }
     }
 
 

@@ -10,10 +10,9 @@
     <ListView
         android:id="@+id/questList"
         android:layout_width="388dp"
-        android:layout_height="446dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +21,11 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addQuestBtn"
         android:layout_width="71dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="80dp"
-        android:layout_marginEnd="28dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="12dp"
         android:clickable="true"
         android:onClick="onQuestAddButtonClicked"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,10 +45,21 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/questList"
         android:layout_alignParentTop="true"
         android:text="Button" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="13dp"
+        android:text="Quests of James!"
+        android:textSize="30sp" />
 
 </RelativeLayout>

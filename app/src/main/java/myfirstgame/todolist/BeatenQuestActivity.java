@@ -1,12 +1,12 @@
 package myfirstgame.todolist;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class BeatenQuestActivity extends MyMenu {
 
@@ -15,6 +15,14 @@ public class BeatenQuestActivity extends MyMenu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beaten_quest);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+
+        DBHelper dbHelper = new DBHelper(this);
+        ArrayList<Quest> questList = Quest.allComplete(dbHelper);
+
+        BeatenQuestAdapter questAdapter = new BeatenQuestAdapter(this, questList);
+        ListView listView = findViewById(R.id.beatenQuests);
+        listView.setAdapter(questAdapter);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {

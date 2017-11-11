@@ -16,4 +16,22 @@
         app:itemTextColor="@color/colorAccent"
         app:menu="@menu/bottom_navigation_main" />
 
+    <ListView
+        android:id="@+id/beatenQuests"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="67dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Beaten Quests of James!"
+        android:textSize="30sp" />
+
 </RelativeLayout>
