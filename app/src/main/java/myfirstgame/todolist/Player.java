@@ -51,13 +51,15 @@ public class Player {
         this.level = level;
     }
 
-    public static Player load(String player){
-        DBHelper dbHelper = new DBHelper(this.getClass());
+    public static Player load(DBHelper dbHelper, String name){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + PROFILE_TABLE_NAME, null);
+        String where = " WHERE name=?";
+        String[] whereArgs = new String[] {String.valueOf(name)};
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + PROFILE_TABLE_NAME + where, whereArgs);
         while (cursor.moveToNext()) {
             Integer id = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_ID));
-            String name = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
+            String userName = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
             Integer strength = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STRENGTH_EXP));
             Integer stamina = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STAMINA_EXP));
             Integer intelligence = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_INTELLIGENCE_EXP));
@@ -65,8 +67,10 @@ public class Player {
             Double level = cursor.getDouble(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
 
             cursor.close();
+            Player player = new Player(id, userName, strength, stamina, intelligence, social, level);
+            return player;
         }
-        return Player(id, name, strength, stamina, intelligence, social, level)
+        return null;
     }
 
 

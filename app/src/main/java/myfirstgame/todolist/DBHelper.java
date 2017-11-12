@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test24.db";
+    public static final String DATABASE_NAME = "test25.db";
 
     //    Category table
 

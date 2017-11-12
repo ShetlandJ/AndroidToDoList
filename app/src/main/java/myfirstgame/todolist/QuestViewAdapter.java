@@ -46,22 +46,8 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         expValue.setText(currentQuest.getExpValue().toString());
 
         final DBHelper dbHelper = new DBHelper(this.getContext());
-
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + PROFILE_TABLE_NAME, null);
-        while (cursor.moveToNext()) {
-            Integer id = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_ID));
-            String name = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
-            Integer strength = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STRENGTH_EXP));
-            Integer stamina = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STAMINA_EXP));
-            Integer intelligence = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_INTELLIGENCE_EXP));
-            Integer social = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_SOCIAL_EXP));
-            Double level = cursor.getDouble(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
-
-            player = new Player(id, name, strength, stamina, intelligence, social, level);
-            cursor.close();
-
-        }
+        
+        player = Player.load(dbHelper, "James");
 
         listItemView.setTag(currentQuest);
 
