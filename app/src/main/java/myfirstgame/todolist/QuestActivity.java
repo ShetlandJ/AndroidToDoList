@@ -17,11 +17,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+
 public class QuestActivity extends MyMenu {
 
     Button button;
     ListView listView;
     Button expValue;
+    Player player;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -30,11 +32,11 @@ public class QuestActivity extends MyMenu {
         setContentView(R.layout.quests);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
-        DBHelper dbHelper = new DBHelper(this);
+        final DBHelper dbHelper = new DBHelper(this);
         ArrayList<Quest> questList = Quest.allIncomplete(dbHelper);
 
-        QuestViewAdapter questAdapter = new QuestViewAdapter(this, questList);
-        ListView listView = findViewById(R.id.questList);
+        final QuestViewAdapter questAdapter = new QuestViewAdapter(this, questList);
+        final ListView listView = findViewById(R.id.questList);
         listView.setAdapter(questAdapter);
 
 
@@ -68,8 +70,16 @@ public class QuestActivity extends MyMenu {
             }
         });
 
+//        expValue.setOnLongClickListener(new View.OnLongClickListener() {
+//            public boolean onLongClick(View v) {
+//                longclick(dbHelper, player);
+//                listView.removeView(v);
+//                return true;
+//            }
+//        });
 
     }
+
 
     public void onQuestAddButtonClicked(View button){
         FloatingActionButton fab = findViewById(R.id.addQuestBtn);

@@ -1,6 +1,8 @@
 package myfirstgame.todolist;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_ID;
+import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_INTELLIGENCE_EXP;
+import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_LEVEL;
+import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_NAME;
+import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_SOCIAL_EXP;
+import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_STAMINA_EXP;
+import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_STRENGTH_EXP;
+import static myfirstgame.todolist.DBHelper.PROFILE_TABLE_NAME;
+
 public class QuestViewAdapter extends ArrayAdapter<Quest> {
 
     Button expValue;
@@ -22,7 +33,7 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         super(context, 0, quests);
     }
 
-    public View getView(final int position, View listItemView, ViewGroup parent){
+    public View getView(final int position, View listItemView, ViewGroup parent) {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.quest_item, parent, false);
         }
@@ -31,24 +42,42 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         TextView itemName = listItemView.findViewById(R.id.itemName);
         itemName.setText(currentQuest.getName().toString());
 
-        final Button expValue = listItemView.findViewById(R.id.expValue);
+        Button expValue = listItemView.findViewById(R.id.expValue);
         expValue.setText(currentQuest.getExpValue().toString());
 
         final DBHelper dbHelper = new DBHelper(this.getContext());
 
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + PROFILE_TABLE_NAME, null);
+        while (cursor.moveToNext()) {
+            Integer id = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_ID));
+            String name = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
+            Integer strength = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STRENGTH_EXP));
+            Integer stamina = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STAMINA_EXP));
+            Integer intelligence = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_INTELLIGENCE_EXP));
+            Integer social = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_SOCIAL_EXP));
+            Double level = cursor.getDouble(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
 
-        expValue.setOnLongClickListener(new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                longclick(dbHelper, currentQuest, player);
-                return true;
-            }
-        });
+            player = new Player(id, name, strength, stamina, intelligence, social, level);
+            cursor.close();
+
+        }
 
         listItemView.setTag(currentQuest);
 
-        return listItemView;
+            expValue.setOnLongClickListener(new View.OnLongClickListener() {
 
-    }
+                public boolean onLongClick(View v) {
+                    longclick(dbHelper, currentQuest, player);
+                    notifyDataSetChanged();
+                    return true;
+                }
+            });
+
+
+            return listItemView;
+
+        }
 
     public void longclick(DBHelper dbHelper, Quest quest, Player player)
     {
@@ -73,8 +102,9 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
                 break;
         }
         remove(quest);
-        notifyDataSetChanged();
 
     }
+
+
 
 }

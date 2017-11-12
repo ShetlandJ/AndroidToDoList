@@ -51,6 +51,24 @@ public class Player {
         this.level = level;
     }
 
+    public static Player load(String player){
+        DBHelper dbHelper = new DBHelper(this.getClass());
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + PROFILE_TABLE_NAME, null);
+        while (cursor.moveToNext()) {
+            Integer id = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_ID));
+            String name = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
+            Integer strength = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STRENGTH_EXP));
+            Integer stamina = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STAMINA_EXP));
+            Integer intelligence = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_INTELLIGENCE_EXP));
+            Integer social = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_SOCIAL_EXP));
+            Double level = cursor.getDouble(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
+
+            cursor.close();
+        }
+        return Player(id, name, strength, stamina, intelligence, social, level)
+    }
+
 
     protected String getName() {
         return name;
@@ -81,19 +99,19 @@ public class Player {
     }
 
     public void setStrength(int strength) {
-        this.strengthExp = strength;
+        this.strengthExp += strength;
     }
 
     public void setStamina(int stamina) {
-        this.staminaExp = stamina;
+        this.staminaExp += stamina;
     }
 
     public void setIntelligence(int intelligence) {
-        this.intelligenceExp = intelligence;
+        this.intelligenceExp += intelligence;
     }
 
     public void setSocial(int social) {
-        this.socialExp = social;
+        this.socialExp += social;
     }
 
     public int getTotalExperience() {
@@ -167,7 +185,10 @@ public class Player {
         contentValues.put(PROFILE_COLUMN_SOCIAL_EXP, socialExp);
         contentValues.put(PROFILE_COLUMN_LEVEL, level);
 
-        db.update(PROFILE_TABLE_NAME, contentValues, PROFILE_COLUMN_ID+"="+id, null);
+        String where = "name=?";
+        String[] whereArgs = new String[] {String.valueOf(name)};
+
+        db.update(PROFILE_TABLE_NAME, contentValues, where, whereArgs);
         db.close();
     }
 }
