@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,12 +17,33 @@ import android.widget.Toast;
  */
 
 public class MyMenu extends AppCompatActivity {
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.bottom_navigation_main, menu);
+
+
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId())
+//                {
+//                    case R.id.menu_beaten:
+//                        onButtonClicked(R.id.menu_beaten);
+//                        Toast.makeText(MyMenu.this, "TEST TOAST", Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.menu_quests:
+//                        onButtonClicked(R.id.menu_quests);
+//                        Toast.makeText(MyMenu.this, "T??", Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.menu_profile:
+//                        onButtonClicked(R.id.menu_profile);
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
 
 
         return true;

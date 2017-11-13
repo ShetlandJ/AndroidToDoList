@@ -74,8 +74,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
             case 1:
                 player.setStrength(quest.getExpValue());
                 player.update(dbHelper);
-                Category.load(dbHelper, "Strength");
-                category.setExp(quest.getExpValue());
                 break;
             case 2:
                 player.setStamina(quest.getExpValue());

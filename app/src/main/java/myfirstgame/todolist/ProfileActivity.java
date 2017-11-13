@@ -32,6 +32,7 @@ public class ProfileActivity extends MyMenu {
         final DBHelper dbHelper = new DBHelper(this);
 
         player = Player.load(dbHelper, "James");
+
         Category strength = Category.load(dbHelper, "Strength");
         Category stamina = Category.load(dbHelper, "Stamina");
         Category intelligence = Category.load(dbHelper, "Intelligence");

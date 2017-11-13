@@ -60,6 +60,7 @@ public class QuestActivity extends MyMenu {
             }
         });
 
+
         Button button = findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
