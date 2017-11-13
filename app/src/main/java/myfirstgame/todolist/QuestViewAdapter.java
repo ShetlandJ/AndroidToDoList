@@ -72,8 +72,10 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         switch (quest.getCategory()) {
             case 1:
                 player.setStrength(quest.getExpValue());
+                player.setLevel();
                 player.update(dbHelper);
                 category.setExp(quest.getExpValue());
+                category.setLevel();
                 category.update(dbHelper);
                 break;
             case 2:

@@ -60,39 +60,36 @@ public class ProfileActivity extends MyMenu {
             });
 
 
-            strengthExp = findViewById(R.id.strengthExp);
-            strengthExp.setText("STRENGTH LEVEL: " + player.getStrength().toString());
+            strengthExp = findViewById(R.id.strengthEXP);
+            strengthExp.setText(strength.getLevel().toString());
             strengthExp.bringToFront();
 
-            staminaExp = findViewById(R.id.staminaExp);
-            staminaExp.setText("STAMINA: " + player.getStamina().toString());
-            staminaExp.bringToFront();
-
-            intelligenceExp = findViewById(R.id.intelligenceExp);
-            intelligenceExp.setText("INTELLIGENCE: " + player.getIntelligence().toString());
-            intelligenceExp.bringToFront();
-
-            socialExp = findViewById(R.id.socialExp);
-            socialExp.setText("SOCIAL: " + player.getSocial().toString());
-            socialExp.bringToFront();
-
-            totalExp = findViewById(R.id.totalExp);
-            totalExp.setText("TOTAL EXP: " + player.getTotalExperience().toString());
-            totalExp.bringToFront();
-
-            level = findViewById(R.id.levelNumber);
-            player.getTotalExperience();
-            player.setLevel();
-            player.update(dbHelper);
-            level.setText("LEVEL: " + player.getLevel().toString());
-            level.bringToFront();
-
-            levelOver = findViewById(R.id.levelExp);
-            levelOver.setText(player.getLevel().toString());
-
-            expNeeded = findViewById(R.id.levelCounter);
-            expNeeded.setText("LEVEL (" + player.getTotalExperience() + " / " + Level.getLevelExp(player.getLevel() + 1) + ")");
-
+//            staminaExp = findViewById(R.id.staminaExp);
+//            staminaExp.setText("STAMINA: " + player.getStamina().toString());
+//            staminaExp.bringToFront();
+//
+//            intelligenceExp = findViewById(R.id.intelligenceExp);
+//            intelligenceExp.setText("INTELLIGENCE: " + player.getIntelligence().toString());
+//            intelligenceExp.bringToFront();
+//
+//            socialExp = findViewById(R.id.socialExp);
+//            socialExp.setText("SOCIAL: " + player.getSocial().toString());
+//            socialExp.bringToFront();
+//
+//            totalExp = findViewById(R.id.totalExp);
+//            totalExp.setText("TOTAL EXP: " + player.getTotalExperience().toString());
+//            totalExp.bringToFront();
+//
+//            level = findViewById(R.id.levelNumber);
+//            level.setText("LEVEL: " + player.getLevel().toString());
+//            level.bringToFront();
+//
+//            levelOver = findViewById(R.id.levelExp);
+//            levelOver.setText(player.getLevel().toString());
+//
+//            expNeeded = findViewById(R.id.levelCounter);
+//            expNeeded.setText("LEVEL (" + player.getTotalExperience() + " / " + Level.getLevelExp(player.getLevel() + 1) + ")");
+//
             ProgressBar simpleProgressBar = findViewById(R.id.simpleProgressBar);
             simpleProgressBar.setMax(100);
             simpleProgressBar.setProgress(playerProgressByPercentage());
@@ -121,9 +118,9 @@ public class ProfileActivity extends MyMenu {
     public int categoryProgressByPercentage(Category category){
         Integer categoryExp = category.getExp();
 
-        int currentExpNeeded = Level.getLevelExp(category.getExp());
+        int currentExpNeeded = Level.getCategoryLevelExp(category.getLevel());
 
-        int nextLevelExp = Level.getLevelExp(category.getLevel() + 1);
+        int nextLevelExp = Level.getCategoryLevelExp(category.getLevel() + 1);
 
         double ratio = (1.0*categoryExp - currentExpNeeded) / (1.0*nextLevelExp - currentExpNeeded);
 
