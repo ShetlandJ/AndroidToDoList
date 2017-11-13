@@ -70,13 +70,6 @@ public class QuestActivity extends MyMenu {
             }
         });
 
-//        expValue.setOnLongClickListener(new View.OnLongClickListener() {
-//            public boolean onLongClick(View v) {
-//                longclick(dbHelper, player);
-//                listView.removeView(v);
-//                return true;
-//            }
-//        });
 
     }
 

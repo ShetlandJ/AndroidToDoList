@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test25.db";
+    public static final String DATABASE_NAME = "test33.db";
 
     //    Category table
 
@@ -67,7 +67,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Intelligence', 0, 0 );");
         db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Social', 0, 0 );");
 
-        db.execSQL("INSERT INTO " + PROFILE_TABLE_NAME + "('name', 'strength_exp', 'stamina_exp', 'intelligence_exp', 'social_exp', 'level') VALUES ('James', 0, 0, 0, 0, 1 );");
+        db.execSQL("INSERT INTO " + PROFILE_TABLE_NAME + "('name', 'strength_exp', 'stamina_exp', 'intelligence_exp', 'social_exp', 'level') VALUES ('James', 0, 0, 0, 0, 0 );");
 
 
         db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");

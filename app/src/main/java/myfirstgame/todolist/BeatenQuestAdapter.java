@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,9 +27,6 @@ public class BeatenQuestAdapter extends ArrayAdapter<Quest> {
 
             TextView itemName = listItemView.findViewById(R.id.beatenQuestName);
             itemName.setText(currentQuest.getName().toString());
-//
-//            Button expValue = listItemView.findViewById(R.id.expValue);
-//            expValue.setText(currentQuest.getExpValue().toString());
 
             listItemView.setTag(currentQuest);
 

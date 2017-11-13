@@ -27,22 +27,22 @@ public class TestPlayer {
 
     @Test
     public void canGetExperienceTotal(){
-        player = new Player("James", 250, 100, 50, 50, 0);
-        assertEquals(450, player.getTotalExperience());
+        player = new Player("James", 250, 100, 50, 50, 1);
+        assertEquals(450, player.getTotalExperience(), 0.1);
     }
 
     @Test
     public void canLevelUp(){
-        player = new Player("James", 1000, 750, 2000, 50, 0);
+        player = new Player("James", 1000, 750, 2000, 50, 1);
         player.setLevel();
         assertEquals(2.0, player.getLevel(), 0.1);
     }
 
     @Test
-    public void canGainExp(){
-        player = new Player("James", 1000, 750, 2000, 50, 0);
-        player.setLevel();
-        assertEquals(2.0, player.getLevel(), 0.1);
+    public void canShowProgressPercentage(){
+        player = new Player("James", 1000, 750, 2000, 50, 1);
+        assertEquals(84.0, player.progressByPercentage(), 0.1);
     }
+
 
 }

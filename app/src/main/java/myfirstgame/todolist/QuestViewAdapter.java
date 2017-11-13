@@ -28,6 +28,7 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
     Button expValue;
     Quest quest;
     Player player;
+    Category category;
 
     public QuestViewAdapter(Context context, ArrayList<Quest> quests){
         super(context, 0, quests);
@@ -46,7 +47,7 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         expValue.setText(currentQuest.getExpValue().toString());
 
         final DBHelper dbHelper = new DBHelper(this.getContext());
-        
+
         player = Player.load(dbHelper, "James");
 
         listItemView.setTag(currentQuest);
@@ -73,6 +74,8 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
             case 1:
                 player.setStrength(quest.getExpValue());
                 player.update(dbHelper);
+                Category.load(dbHelper, "Strength");
+                category.setExp(quest.getExpValue());
                 break;
             case 2:
                 player.setStamina(quest.getExpValue());
@@ -88,7 +91,11 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
                 break;
         }
         remove(quest);
-
+        Context context = this.getContext();
+        CharSequence text = "Quest beaten!";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
 

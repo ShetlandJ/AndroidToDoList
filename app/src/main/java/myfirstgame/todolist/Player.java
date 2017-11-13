@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_ID;
@@ -24,14 +23,14 @@ import static myfirstgame.todolist.DBHelper.PROFILE_TABLE_NAME;
 public class Player {
 
     private String name;
-    private int strengthExp;
-    private int staminaExp;
-    private int intelligenceExp;
-    private int socialExp;
+    private Integer strengthExp;
+    private Integer staminaExp;
+    private Integer intelligenceExp;
+    private Integer socialExp;
     private int id;
-    private double level;
+    private Integer level;
 
-    public Player(String name, int strengthExp, int staminaExp, int intelligenceExp, int socialExp, double level) {
+    public Player(String name, Integer strengthExp, Integer staminaExp, Integer intelligenceExp, Integer socialExp, Integer level) {
         this.name = name;
         this.strengthExp = strengthExp;
         this.staminaExp = staminaExp;
@@ -40,7 +39,7 @@ public class Player {
         this.level = level;
     }
 
-    public Player(int id,String name, int strengthExp, int staminaExp, int intelligenceExp, int socialExp, double level) {
+    public Player(int id,String name, Integer strengthExp, Integer staminaExp, Integer intelligenceExp, Integer socialExp, Integer level) {
         this.id = id;
         this.name = name;
         this.strengthExp = strengthExp;
@@ -64,7 +63,7 @@ public class Player {
             Integer stamina = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STAMINA_EXP));
             Integer intelligence = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_INTELLIGENCE_EXP));
             Integer social = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_SOCIAL_EXP));
-            Double level = cursor.getDouble(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
+            Integer level = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
 
             cursor.close();
             Player player = new Player(id, userName, strength, stamina, intelligence, social, level);
@@ -78,23 +77,23 @@ public class Player {
         return name;
     }
 
-    private int getStrength() {
+    public Integer getStrength() {
         return strengthExp;
     }
 
-    private int getStamina() {
+    protected Integer getStamina() {
         return staminaExp;
     }
 
-    private int getIntelligence() {
+    protected Integer getIntelligence() {
         return intelligenceExp;
     }
 
-    private int getSocial() {
+    protected Integer getSocial() {
         return socialExp;
     }
 
-    public double getLevel() {
+    protected Integer getLevel() {
         return level;
     }
 
@@ -118,16 +117,27 @@ public class Player {
         this.socialExp += social;
     }
 
-    public int getTotalExperience() {
+
+    public Integer getTotalExperience() {
         return getStrength() + getIntelligence() + getSocial() + getStamina();
     }
 
     public void setLevel(){
-        double totalExperience = getTotalExperience();
-        double levelCalc = (totalExperience / 1500);
-        levelCalc = Math.floor(levelCalc);
-        this.level = levelCalc;
+        Integer totalExperience = getTotalExperience();
+        Integer levelCalc = (totalExperience / 1500);
+        level = 1;
+        level += levelCalc;
     }
+
+    public int progressByPercentage(){
+        double totalExperience = getTotalExperience();
+        setLevel();
+        double myLevel = (1500 * level);
+        double calc = (totalExperience / myLevel) * 100;
+        double percentage = calc;
+        int myInt = (int) (percentage * 1);
+        return myInt;
+}
 
     public boolean save(DBHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -153,7 +163,7 @@ public class Player {
             Integer stamina = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STAMINA_EXP));
             Integer intelligence = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_INTELLIGENCE_EXP));
             Integer social = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_SOCIAL_EXP));
-            Double level = cursor.getDouble(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
+            Integer level = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
 
             Player player = new Player(id, name, strength, stamina, intelligence, social, level);
             players.add(player);

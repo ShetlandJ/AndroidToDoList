@@ -1,30 +1,26 @@
 package myfirstgame.todolist;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_ID;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_INTELLIGENCE_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_LEVEL;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_NAME;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_SOCIAL_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_STAMINA_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_STRENGTH_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_TABLE_NAME;
 
 
 public class ProfileActivity extends MyMenu {
 
     TextView nameText;
+    TextView strengthExp;
+    TextView staminaExp;
+    TextView intelligenceExp;
+    TextView socialExp;
+    TextView totalExp;
+    TextView level;
+    TextView levelOver;
+    TextView expNeeded;
+
     Player player;
-    SQLiteDatabase db;
-    Cursor cursorPlayers;
-    DBHelper dbHelper;
 
 
     @Override
@@ -33,22 +29,17 @@ public class ProfileActivity extends MyMenu {
         setContentView(R.layout.activity_profile);
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + PROFILE_TABLE_NAME, null);
-        while (cursor.moveToNext()) {
-            Integer id = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_ID));
-            String name = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
-            Integer strength = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STRENGTH_EXP));
-            Integer stamina = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_STAMINA_EXP));
-            Integer intelligence = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_INTELLIGENCE_EXP));
-            Integer social = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_SOCIAL_EXP));
-            Double level = cursor.getDouble(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
+        final DBHelper dbHelper = new DBHelper(this);
 
-            Player player = new Player(id, name, strength, stamina, intelligence, social, level);
-            cursor.close();
+        player = Player.load(dbHelper, "James");
+        Category strength = Category.load(dbHelper, "Strength");
+        Category stamina = Category.load(dbHelper, "Stamina");
+        Category intelligence = Category.load(dbHelper, "Intelligence");
+        Category social = Category.load(dbHelper, "Social");
 
 
-            BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -67,11 +58,75 @@ public class ProfileActivity extends MyMenu {
                 }
             });
 
-            nameText = findViewById(R.id.name);
-            nameText.setText(player.getName());
+
+            strengthExp = findViewById(R.id.strengthExp);
+            strengthExp.setText("STRENGTH LEVEL: " + player.getStrength().toString());
+            strengthExp.bringToFront();
+
+            staminaExp = findViewById(R.id.staminaExp);
+            staminaExp.setText("STAMINA: " + player.getStamina().toString());
+            staminaExp.bringToFront();
+
+            intelligenceExp = findViewById(R.id.intelligenceExp);
+            intelligenceExp.setText("INTELLIGENCE: " + player.getIntelligence().toString());
+            intelligenceExp.bringToFront();
+
+            socialExp = findViewById(R.id.socialExp);
+            socialExp.setText("SOCIAL: " + player.getSocial().toString());
+            socialExp.bringToFront();
+
+            totalExp = findViewById(R.id.totalExp);
+            totalExp.setText("TOTAL EXP: " + player.getTotalExperience().toString());
+            totalExp.bringToFront();
+
+            level = findViewById(R.id.levelNumber);
+            player.getTotalExperience();
+            player.setLevel();
+            player.update(dbHelper);
+            level.setText("LEVEL: " + player.getLevel().toString());
+            level.bringToFront();
+
+            levelOver = findViewById(R.id.levelExp);
+            levelOver.setText(player.getLevel().toString());
+
+            expNeeded = findViewById(R.id.levelCounter);
+            expNeeded.setText("LEVEL (" + player.getTotalExperience() + " / " + Level.getLevelExp(player.getLevel() + 1) + ")");
+
+            ProgressBar simpleProgressBar = findViewById(R.id.simpleProgressBar);
+            simpleProgressBar.setMax(100);
+            simpleProgressBar.setProgress(playerProgressByPercentage());
+
+            ProgressBar strengthProgressBar = findViewById(R.id.strengthProgressBar);
+            strengthProgressBar.setMax(100);
+            strengthProgressBar.setProgress(categoryProgressByPercentage(strength));
 
 
-        }
 
     }
+
+    public int playerProgressByPercentage(){
+        int myExp = player.getTotalExperience();
+
+        int currentExpNeeded = Level.getLevelExp(player.getLevel());
+
+        int nextLevelExp = Level.getLevelExp(player.getLevel() + 1);
+
+        double ratio = (1.0*myExp - currentExpNeeded) / (1.0*nextLevelExp - currentExpNeeded);
+
+        return (int) (100 * ratio);
+    }
+
+
+    public int categoryProgressByPercentage(Category category){
+        Integer categoryExp = category.getExp();
+
+        int currentExpNeeded = Level.getLevelExp(category.getExp());
+
+        int nextLevelExp = Level.getLevelExp(category.getLevel() + 1);
+
+        double ratio = (1.0*categoryExp - currentExpNeeded) / (1.0*nextLevelExp - currentExpNeeded);
+
+        return (int) (100 * ratio);
+    }
+
 }

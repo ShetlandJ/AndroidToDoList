@@ -17,13 +17,128 @@
         app:menu="@menu/bottom_navigation_main" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/strengthExp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="23dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:textSize="30sp"
+        tools:text="strength exp" />
+
+    <TextView
+        android:id="@+id/staminaExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/strengthExp"
+        android:layout_below="@+id/strengthExp"
+        android:layout_marginTop="19dp"
+        android:textSize="30sp"
+        tools:text="stamina exp" />
+
+    <TextView
+        android:id="@+id/intelligenceExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/staminaExp"
+        android:layout_below="@+id/staminaExp"
+        android:layout_marginTop="12dp"
+        android:textSize="30sp"
+        tools:text="intelligence exp" />
+
+    <TextView
+        android:id="@+id/socialExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/intelligenceExp"
+        android:layout_below="@+id/intelligenceExp"
+        android:layout_marginTop="17dp"
+        android:textSize="30sp"
+        tools:text="social exp" />
+
+    <TextView
+        android:id="@+id/totalExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/socialExp"
+        android:layout_below="@+id/socialExp"
+        android:layout_marginTop="21dp"
+        android:textSize="30sp"
+        tools:text="total exp" />
+
+    <TextView
+        android:id="@+id/levelNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/totalExp"
+        android:layout_below="@+id/totalExp"
+        android:layout_marginTop="24dp"
+        android:text="level"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="110dp"
-        tools:text="name" />
+        android:layout_marginBottom="33dp"
+        android:background="@drawable/bgimg"
+        android:visibility="gone"
+        app:srcCompat="@drawable/bgimg" />
+
+    <ProgressBar
+        android:id="@+id/simpleProgressBar"
+        style="@style/tallerBarStyle"
+        android:layout_width="200sp"
+        android:layout_height="50sp"
+        android:layout_alignStart="@+id/levelCounter"
+        android:layout_below="@+id/levelCounter"
+        android:layout_marginTop="13dp"
+        android:maxHeight="20dip"
+        android:minHeight="20dip" />
+
+    <TextView
+        android:id="@+id/levelCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/levelNumber"
+        android:layout_below="@+id/levelNumber"
+        android:layout_marginTop="27dp"
+        tools:text="level count" />
+
+    <TextView
+        android:id="@+id/levelExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/simpleProgressBar"
+        android:layout_alignEnd="@+id/levelCounter"
+        android:layout_alignStart="@+id/simpleProgressBar"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp"
+        tools:text="lv" />
+
+    <ProgressBar
+        android:id="@+id/strengthProgressBar"
+        style="@style/tallerBarStyle"
+        android:layout_width="100sp"
+        android:layout_height="50sp"
+        android:layout_alignBottom="@+id/levelNumber"
+        android:layout_alignStart="@+id/imageView2"
+        android:maxHeight="20dip"
+        android:minHeight="20dip" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/levelCounter"
+        android:layout_alignTop="@+id/strengthProgressBar"
+        android:layout_toEndOf="@+id/intelligenceExp"
+        app:srcCompat="@drawable/strength" />
+
 
 </RelativeLayout>

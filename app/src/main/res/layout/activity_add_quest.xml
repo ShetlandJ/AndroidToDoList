@@ -16,73 +16,52 @@
         android:ems="10"
         android:hint="What're you gonna do"
         android:inputType="textPersonName"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/questDescInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <EditText
         android:id="@+id/questDescInput"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="Tell me a bit more"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/expValueInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questNameInput" />
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="111dp" />
 
     <EditText
         android:id="@+id/expValueInput"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="EXP value"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/categoryInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questDescInput" />
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="202dp" />
 
     <Button
         android:id="@+id/saveQuestBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="addQuest"
         android:text="Add Quest"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateInput" />
+        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteY="445dp" />
 
     <EditText
         android:id="@+id/categoryInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Category"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/dateInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expValueInput" />
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="289dp" />
 
     <EditText
         android:id="@+id/dateInput"

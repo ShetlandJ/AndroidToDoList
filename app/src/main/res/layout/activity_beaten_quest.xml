@@ -17,6 +17,7 @@
         app:menu="@menu/bottom_navigation_main" />
 
     <ListView
+        android:background="@drawable/bgimg"
         android:id="@+id/beatenQuests"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
