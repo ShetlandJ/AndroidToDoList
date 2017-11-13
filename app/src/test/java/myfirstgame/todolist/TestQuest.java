@@ -19,8 +19,8 @@ public class TestQuest {
 
     @Before
     public void setUp() throws Exception {
-//        date = new SimpleDateFormat("d MMMM, yyyy");
-//        quest = new Quest("Go to the Gym", "Do Yoga and weightlifting", 100, Category.STRENGTH, date.toString());
+        date = new SimpleDateFormat("d MMMM, yyyy");
+        quest = new Quest("Go to the Gym", "Do Yoga and weightlifting", 100, 1, date.toString());
     }
 
     @Test
@@ -33,6 +33,11 @@ public class TestQuest {
     public void canChangeExpValue(){
         quest.setExpValue(50);
 //        assertEquals(50, quest.getExpValue());
+    }
+
+    @Test
+    public void canReturnName(){
+        assertEquals("Strength", quest.showCategoryNameByNumber(1));
     }
 
 }

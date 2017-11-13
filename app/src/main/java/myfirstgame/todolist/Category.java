@@ -32,17 +32,17 @@ public class Category {
     private Integer exp;
     private Integer level;
 
-    public Category(String name) {
+    public Category(String name, Integer exp, Integer level) {
         this.name = name;
-        this.exp = 0;
-        this.level = 0;
+        this.exp = exp;
+        this.level = level;
     }
 
     public Category(int id, String name, Integer exp, Integer level) {
         this.id = id;
         this.name = name;
-        this.exp = 0;
-        this.level = 0;
+        this.exp = exp;
+        this.level = level;
     }
 
     public static Category load(DBHelper dbHelper, String name){
@@ -51,6 +51,7 @@ public class Category {
         String[] whereArgs = new String[] {String.valueOf(name)};
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + CATEGORY_TABLE_NAME + where, whereArgs);
+        Category category = null;
         while (cursor.moveToNext()) {
             Integer id = cursor.getInt(cursor.getColumnIndex(CATEGORY_COLUMN_ID));
             String catName = cursor.getString(cursor.getColumnIndex(CATEGORY_COLUMN_NAME));
@@ -58,18 +59,17 @@ public class Category {
             Integer level = cursor.getInt(cursor.getColumnIndex(CATEGORY_COLUMN_LEVEL));
 
             cursor.close();
-            Category category = new Category(id, catName, exp, level);
-            return category;
+            category = new Category(id, catName, exp, level);
         }
-        return null;
+        return category;
     }
 
     public Integer getExp() {
         return exp;
     }
 
-    public void setExp(Integer exp) {
-        this.exp = exp;
+    public void setExp(Integer experiencePoints) {
+        this.exp += experiencePoints;
     }
 
     public Integer getLevel() {
@@ -77,10 +77,12 @@ public class Category {
     }
 
     public void setLevel(){
-        Integer levelCalc = (getExp() / 1500);
-        level = 0;
+        Integer totalExperience = getExp();
+        Integer levelCalc = (totalExperience / 1500);
+        level = 1;
         level += levelCalc;
     }
+
 
     public boolean save(DBHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -131,7 +133,7 @@ public class Category {
             return;
         }
         ContentValues contentValues = new ContentValues();
-        contentValues.put(PROFILE_COLUMN_NAME, name);
+        contentValues.put(CATEGORY_COLUMN_NAME, name);
         contentValues.put(CATEGORY_COLUMN_EXP, exp);
         contentValues.put(CATEGORY_COLUMN_LEVEL, level);
 

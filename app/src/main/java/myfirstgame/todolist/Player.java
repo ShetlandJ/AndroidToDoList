@@ -56,6 +56,7 @@ public class Player {
         String[] whereArgs = new String[] {String.valueOf(name)};
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + PROFILE_TABLE_NAME + where, whereArgs);
+        Player player = null;
         while (cursor.moveToNext()) {
             Integer id = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_ID));
             String userName = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
@@ -66,10 +67,9 @@ public class Player {
             Integer level = cursor.getInt(cursor.getColumnIndex(PROFILE_COLUMN_LEVEL));
 
             cursor.close();
-            Player player = new Player(id, userName, strength, stamina, intelligence, social, level);
-            return player;
+            player = new Player(id, userName, strength, stamina, intelligence, social, level);
         }
-        return null;
+        return player;
     }
 
 

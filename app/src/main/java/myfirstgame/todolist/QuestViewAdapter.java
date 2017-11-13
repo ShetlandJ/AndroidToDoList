@@ -25,8 +25,6 @@ import static myfirstgame.todolist.DBHelper.PROFILE_TABLE_NAME;
 
 public class QuestViewAdapter extends ArrayAdapter<Quest> {
 
-    Button expValue;
-    Quest quest;
     Player player;
     Category category;
 
@@ -52,10 +50,11 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
 
         listItemView.setTag(currentQuest);
 
-            expValue.setOnLongClickListener(new View.OnLongClickListener() {
+        category = Category.load(dbHelper, currentQuest.showCategoryNameByNumber(currentQuest.getCategory()));
+        expValue.setOnLongClickListener(new View.OnLongClickListener() {
 
                 public boolean onLongClick(View v) {
-                    longclick(dbHelper, currentQuest, player);
+                    longclick(dbHelper, currentQuest, player, category);
                     notifyDataSetChanged();
                     return true;
                 }
@@ -66,7 +65,7 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
 
         }
 
-    public void longclick(DBHelper dbHelper, Quest quest, Player player)
+    public void longclick(DBHelper dbHelper, Quest quest, Player player, Category category)
     {
         quest.setCompleted(1);
         quest.update(dbHelper);
@@ -74,18 +73,27 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
             case 1:
                 player.setStrength(quest.getExpValue());
                 player.update(dbHelper);
+                category.setExp(quest.getExpValue());
+                category.update(dbHelper);
                 break;
             case 2:
                 player.setStamina(quest.getExpValue());
                 player.update(dbHelper);
+                category.setExp(quest.getExpValue());
+                category.update(dbHelper);
                 break;
             case 3:
                 player.setIntelligence(quest.getExpValue());
                 player.update(dbHelper);
+                category.setExp(quest.getExpValue());
+                category.update(dbHelper);
+
                 break;
             case 4:
                 player.setSocial(quest.getExpValue());
                 player.update(dbHelper);
+                category.setExp(quest.getExpValue());
+                category.update(dbHelper);
                 break;
         }
         remove(quest);

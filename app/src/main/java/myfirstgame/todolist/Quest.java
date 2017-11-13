@@ -101,6 +101,37 @@ public class Quest {
         this.date = date;
     }
 
+    public Category getCategoryByInteger(DBHelper dbHelper, Integer questInt){
+
+        switch (questInt) {
+            case 1:
+                return Category.load(dbHelper, "Strength");
+            case 2:
+                return Category.load(dbHelper, "Social");
+            case 3:
+                return Category.load(dbHelper, "Social");
+            case 4:
+                return Category.load(dbHelper, "Social");
+        }
+        return null;
+    }
+
+    public String showCategoryNameByNumber(Integer questInt){
+
+        switch (questInt) {
+            case 1:
+                return "Strength";
+            case 2:
+                return "Stamina";
+            case 3:
+                return "Intelligence";
+            case 4:
+                return "Social";
+
+        }
+        return null;
+    }
+
     public boolean save(DBHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
