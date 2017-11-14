@@ -48,7 +48,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
 
         listItemView.setTag(currentQuest);
 
-
         final View finalListItemView = listItemView;
         expValue.setOnLongClickListener(new View.OnLongClickListener() {
 
@@ -62,7 +61,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         });
 
         return listItemView;
-
 
     }
 
@@ -88,7 +86,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         switch (quest.getCategory()) {
             case 1:
                 player.setStrength(quest.getExpValue());
-                player.update(dbHelper);
                 Category strength = Category.load(dbHelper, "Strength");
                 strength.setExp(quest.getExpValue());
                 strength.setLevel();
@@ -96,7 +93,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
                 break;
             case 2:
                 player.setStamina(quest.getExpValue());
-                player.update(dbHelper);
                 Category stamina = Category.load(dbHelper, "Stamina");
                 stamina.setExp(quest.getExpValue());
                 stamina.setLevel();
@@ -104,7 +100,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
                 break;
             case 3:
                 player.setIntelligence(quest.getExpValue());
-                player.update(dbHelper);
                 Category intelligence = Category.load(dbHelper, "Intelligence");
                 intelligence.setExp(quest.getExpValue());
                 intelligence.setLevel();
@@ -112,7 +107,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
                 break;
             case 4:
                 player.setSocial(quest.getExpValue());
-                player.update(dbHelper);
                 Category social = Category.load(dbHelper, "Social");
                 social.setExp(quest.getExpValue());
                 social.setLevel();
@@ -127,6 +121,7 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         MediaPlayer mp = MediaPlayer.create(this.getContext(), R.raw.complete);
         mp.start();
 
+        player.update(dbHelper);
         player.setLevel();
         player.update(dbHelper);
 

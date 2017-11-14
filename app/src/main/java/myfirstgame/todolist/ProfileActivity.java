@@ -18,7 +18,6 @@ public class ProfileActivity extends MyMenu {
     MyTextView levelOver;
     MyTextView expNeeded;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +25,6 @@ public class ProfileActivity extends MyMenu {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         final DBHelper dbHelper = new DBHelper(this);
-
 
         Category strength = Category.load(dbHelper, "Strength");
         Category stamina = Category.load(dbHelper, "Stamina");
@@ -36,7 +34,6 @@ public class ProfileActivity extends MyMenu {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setItemIconTintList(null);
-
         bottomNavigationView.setSelectedItemId(R.id.menu_profile);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -19,7 +19,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "test79.db";
 
     //    Category table
-
     public static final String CATEGORY_TABLE_NAME = "categories";
     public static final String CATEGORY_COLUMN_ID = "id";
     public static final String CATEGORY_COLUMN_NAME = "name";
@@ -95,7 +94,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-//    §§§§§§ TABLE CHECKER §§§§§§
+//    TABLE CHECKER
     public ArrayList<Cursor> getData(String Query){
         //get writable database
         SQLiteDatabase sqlDB = this.getWritableDatabase();
@@ -133,9 +132,5 @@ public class DBHelper extends SQLiteOpenHelper {
             return alc;
         }
     }
-
-
-//    create table created_topics_table (CREATED_TOPIC_ID INTEGER PRIMARY KEY AUTOINCREMENT, TOPIC_ID INTEGER,USER_ID INTEGER, FOREIGN KEY(TOPIC_ID) REFERENCES topics_table(_ID),FOREIGN KEY (USER_ID) REFERENCES users_table(_ID))
-
 
 }

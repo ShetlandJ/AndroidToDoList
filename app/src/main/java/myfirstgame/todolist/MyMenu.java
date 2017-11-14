@@ -14,9 +14,7 @@ public class MyMenu extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.bottom_navigation_main, menu);
-
         return true;
-
     }
 
     public void onButtonClicked(Integer id){
@@ -31,8 +29,4 @@ public class MyMenu extends AppCompatActivity {
             startActivity(i);
         }
     }
-
-
-
-
 }

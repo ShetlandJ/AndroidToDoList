@@ -38,7 +38,5 @@ public class QuestItemActivity extends AppCompatActivity {
         date = findViewById(R.id.dateView);
         date.setText(questDate);
 
-
-
     }
 }

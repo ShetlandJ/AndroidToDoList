@@ -32,8 +32,6 @@ public class MyTextView extends android.support.v7.widget.AppCompatTextView {
 
     protected void onDraw (Canvas canvas) {
         super.onDraw(canvas);
-
-
     }
 
 }

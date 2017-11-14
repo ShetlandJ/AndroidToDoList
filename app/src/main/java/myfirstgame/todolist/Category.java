@@ -74,7 +74,6 @@ public class Category {
         level += levelCalc;
     }
 
-
     public boolean save(DBHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -85,7 +84,6 @@ public class Category {
         db.insert(CATEGORY_TABLE_NAME, null, contentValues);
         return true;
     }
-
 
     public ArrayList<Category> all(DBHelper dbHelper){
         ArrayList<Category> categories = new ArrayList<>();

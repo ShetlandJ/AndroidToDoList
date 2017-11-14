@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class BeatenQuestAdapter extends ArrayAdapter<Quest> {
 
-
         public BeatenQuestAdapter(Context context, ArrayList<Quest> quests){
             super(context, 0, quests);
         }
@@ -32,6 +31,4 @@ public class BeatenQuestAdapter extends ArrayAdapter<Quest> {
 
             return listItemView;
         }
-
-
     }

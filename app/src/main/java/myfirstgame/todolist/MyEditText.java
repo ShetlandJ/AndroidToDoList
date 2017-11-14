@@ -31,8 +31,5 @@ public class MyEditText extends android.support.v7.widget.AppCompatEditText {
 
     protected void onDraw (Canvas canvas) {
         super.onDraw(canvas);
-
-
     }
-
 }

@@ -59,7 +59,6 @@ public class AddQuestActivity extends AppCompatActivity implements View.OnClickL
         Typeface typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
         featText.setTypeface(typeface);
         featText.setTextColor(getResources().getColor(R.color.progressBar, getResources().newTheme()));
-
     }
 
     public boolean showFeat(){

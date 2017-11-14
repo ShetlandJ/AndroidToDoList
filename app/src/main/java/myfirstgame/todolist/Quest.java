@@ -54,7 +54,6 @@ public class Quest {
         return name;
     }
 
-
     public Integer getExpValue() {
         return expValue;
     }
@@ -204,9 +203,6 @@ public class Quest {
         cursor.close();
         return quests;
     }
-
-//    rawQuery("SELECT id, name FROM people WHERE name = ? AND id = ?", new String[] {"David", "2"});
-
 
     public static boolean deleteAll(DBHelper dbHelper){
         SQLiteDatabase db = dbHelper.getWritableDatabase();

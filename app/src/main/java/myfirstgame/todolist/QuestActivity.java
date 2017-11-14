@@ -6,9 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -35,21 +33,16 @@ public class QuestActivity extends MyMenu {
         final ListView listView = findViewById(R.id.questList);
         listView.setAdapter(questAdapter);
 
-
         header = findViewById(R.id.questsOfName);
         typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
         header.setTypeface(typeface);
         header.setTextColor(getResources().getColor(R.color.soBlueItsBlack, getResources().newTheme()));
 
-
         header.setText("Quests of James:");
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
         bottomNavigationView.setItemIconTintList(null);
-
         bottomNavigationView.setSelectedItemId(R.id.menu_quests);
-
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {
             @Override
@@ -81,7 +74,7 @@ public class QuestActivity extends MyMenu {
         });
 
     }
-    
+
     public void onQuestAddButtonClicked(View button){
         FloatingActionButton fab = findViewById(R.id.addQuestBtn);
 
@@ -98,36 +91,5 @@ public class QuestActivity extends MyMenu {
         i.putExtra("date", quest.getDate());
         startActivity(i);
     }
-
-
-    View.OnTouchListener handleTouch = new View.OnTouchListener() {
-
-        @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-            int x = (int) event.getX();
-            int y = (int) event.getY();
-
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    v.performClick();
-                    Log.i("TAG", "touched down");
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    v.performClick();
-                    Log.i("TAG", "moving: (" + x + ", " + y + ")");
-                    break;
-                case MotionEvent.ACTION_UP:
-                    v.performClick();
-                    Log.i("TAG", "touched up");
-                    break;
-            }
-
-            return true;
-        }
-    };
-
-
-
 
 }

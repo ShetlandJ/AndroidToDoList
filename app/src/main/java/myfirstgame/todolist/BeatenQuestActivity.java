@@ -33,12 +33,9 @@ public class BeatenQuestActivity extends MyMenu {
         header.setTypeface(typeface);
         header.setTextColor(getResources().getColor(R.color.soBlueItsBlack, getResources().newTheme()));
 
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setItemIconTintList(null);
         bottomNavigationView.setSelectedItemId(R.id.menu_beaten);
-
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {
             @Override
@@ -60,6 +57,4 @@ public class BeatenQuestActivity extends MyMenu {
         });
 
     }
-
-
 }

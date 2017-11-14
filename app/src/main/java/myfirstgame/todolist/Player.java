@@ -15,7 +15,6 @@ import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_SOCIAL_EXP;
 import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_LEVEL;
 import static myfirstgame.todolist.DBHelper.PROFILE_TABLE_NAME;
 
-
 /**
  * Created by James on 09/11/2017.
  */
@@ -71,7 +70,6 @@ public class Player {
         }
         return player;
     }
-
 
     protected String getName() {
         return name;
