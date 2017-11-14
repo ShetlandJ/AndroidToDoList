@@ -92,9 +92,8 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         final Animation animation = AnimationUtils.loadAnimation(
 
                 this.getContext(), R.anim.fadeout);
-//        rowView.startAnimation(animation);
-        Handler handle = new Handler();
-        handle.postDelayed(new Runnable() {
+                Handler handle = new Handler();
+                handle.postDelayed(new Runnable() {
 
             public void run() {
                 rowView.startAnimation(animation);

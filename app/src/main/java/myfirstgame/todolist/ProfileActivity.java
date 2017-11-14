@@ -35,6 +35,11 @@ public class ProfileActivity extends MyMenu {
         Category social = Category.load(dbHelper, "Social");
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setItemIconTintList(null);
+
+        bottomNavigationView.setSelectedItemId(R.id.menu_profile);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -44,6 +44,7 @@ public class QuestActivity extends MyMenu {
         final ListView listView = findViewById(R.id.questList);
         listView.setAdapter(questAdapter);
 
+
         header = findViewById(R.id.questsOfName);
         typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
         header.setTypeface(typeface);
@@ -53,6 +54,12 @@ public class QuestActivity extends MyMenu {
         header.setText("Quests of James:");
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setItemIconTintList(null);
+
+        bottomNavigationView.setSelectedItemId(R.id.menu_quests);
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

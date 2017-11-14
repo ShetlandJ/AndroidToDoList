@@ -36,6 +36,10 @@ public class BeatenQuestActivity extends MyMenu {
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.setSelectedItemId(R.id.menu_beaten);
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

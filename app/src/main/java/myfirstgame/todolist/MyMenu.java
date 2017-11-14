@@ -22,30 +22,6 @@ public class MyMenu extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.bottom_navigation_main, menu);
 
-
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId())
-//                {
-//                    case R.id.menu_beaten:
-//                        onButtonClicked(R.id.menu_beaten);
-//                        Toast.makeText(MyMenu.this, "TEST TOAST", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.menu_quests:
-//                        onButtonClicked(R.id.menu_quests);
-//                        Toast.makeText(MyMenu.this, "T??", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.menu_profile:
-//                        onButtonClicked(R.id.menu_profile);
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
-
-
         return true;
 
     }
