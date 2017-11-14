@@ -16,11 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="AndroidDatabaseManager" />
+        <activity android:name=".AndroidDatabaseManager" />
         <activity android:name=".QuestViewAdapter" />
         <activity android:name=".AddQuestActivity" />
         <activity android:name=".BeatenQuestActivity" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".QuestItemActivity"></activity>
     </application>
 
 </manifest>

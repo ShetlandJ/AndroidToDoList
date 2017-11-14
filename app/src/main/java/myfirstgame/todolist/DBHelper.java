@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by James on 09/11/2017.
@@ -17,7 +16,7 @@ import java.util.HashMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test47.db";
+    public static final String DATABASE_NAME = "test50.db";
 
     //    Category table
 
@@ -46,8 +45,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String PROFILE_COLUMN_INTELLIGENCE_EXP = "intelligence_exp";
     public static final String PROFILE_COLUMN_SOCIAL_EXP = "social_exp";
     public static final String PROFILE_COLUMN_LEVEL = "level";
-
-    private HashMap hp;
 
 
     public DBHelper(Context context){

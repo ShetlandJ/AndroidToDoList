@@ -20,11 +20,6 @@ import java.util.ArrayList;
 
 public class QuestActivity extends MyMenu {
 
-    Button button;
-    ListView listView;
-    Button expValue;
-    Player player;
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +76,18 @@ public class QuestActivity extends MyMenu {
         Intent i = new Intent(this, AddQuestActivity.class);
         startActivity(i);
     }
+
+    public void getQuest(View listItem){
+        Quest quest = (Quest) listItem.getTag();
+        Intent i = new Intent(this, QuestItemActivity.class);
+        i.putExtra("name", quest.getName());
+        i.putExtra("description", quest.getDescription());
+        i.putExtra("expValue", quest.getExpValue().toString());
+        i.putExtra("category", quest.showCategoryNameByNumber(quest.getCategory()));
+        i.putExtra("date", quest.getDate());
+        startActivity(i);
+    }
+
 
     View.OnTouchListener handleTouch = new View.OnTouchListener() {
 

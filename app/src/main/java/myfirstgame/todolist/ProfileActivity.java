@@ -1,6 +1,5 @@
 package myfirstgame.todolist;
 
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.os.Bundle;
@@ -11,17 +10,12 @@ import android.widget.TextView;
 
 public class ProfileActivity extends MyMenu {
 
-    TextView nameText;
     TextView strengthExp;
     TextView staminaExp;
     TextView intelligenceExp;
     TextView socialExp;
-    TextView totalExp;
-    TextView level;
     TextView levelOver;
     TextView expNeeded;
-
-    Player player;
 
 
     @Override
@@ -32,7 +26,6 @@ public class ProfileActivity extends MyMenu {
 
         final DBHelper dbHelper = new DBHelper(this);
 
-        player = Player.load(dbHelper, "James");
 
         Category strength = Category.load(dbHelper, "Strength");
         Category stamina = Category.load(dbHelper, "Stamina");
@@ -42,7 +35,7 @@ public class ProfileActivity extends MyMenu {
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
@@ -60,37 +53,31 @@ public class ProfileActivity extends MyMenu {
                 }
             });
 
+        Player user = Player.load(dbHelper, "James");
+        System.out.println(user);
 
             strengthExp = findViewById(R.id.strengthEXP);
             strengthExp.setText(strength.getLevel().toString());
             strengthExp.bringToFront();
 
-//            staminaExp = findViewById(R.id.staminaExp);
-//            staminaExp.setText("STAMINA: " + player.getStamina().toString());
-//            staminaExp.bringToFront();
-//
-//            intelligenceExp = findViewById(R.id.intelligenceExp);
-//            intelligenceExp.setText("INTELLIGENCE: " + player.getIntelligence().toString());
-//            intelligenceExp.bringToFront();
-//
-//            socialExp = findViewById(R.id.socialExp);
-//            socialExp.setText("SOCIAL: " + player.getSocial().toString());
-//            socialExp.bringToFront();
-//
-//            totalExp = findViewById(R.id.totalExp);
-//            totalExp.setText("TOTAL EXP: " + player.getTotalExperience().toString());
-//            totalExp.bringToFront();
-//
-//            level = findViewById(R.id.levelNumber);
-//            level.setText("LEVEL: " + player.getLevel().toString());
-//            level.bringToFront();
-//
-//            levelOver = findViewById(R.id.levelExp);
-//            levelOver.setText(player.getLevel().toString());
-//
-//            expNeeded = findViewById(R.id.levelCounter);
-//            expNeeded.setText("LEVEL (" + player.getTotalExperience() + " / " + Level.getLevelExp(player.getLevel() + 1) + ")");
-//
+            staminaExp = findViewById(R.id.staminaEXP);
+            staminaExp.setText(stamina.getLevel().toString());
+            staminaExp.bringToFront();
+
+            intelligenceExp = findViewById(R.id.intelligenceEXP);
+            intelligenceExp.setText(intelligence.getLevel().toString());
+            intelligenceExp.bringToFront();
+
+            socialExp = findViewById(R.id.socialEXP);
+            socialExp.setText(social.getLevel().toString());
+            socialExp.bringToFront();
+
+            levelOver = findViewById(R.id.levelExp);
+            levelOver.setText(user.getLevel().toString());
+
+            expNeeded = findViewById(R.id.expNeeded);
+            expNeeded.setText("LEVEL (" + user.getTotalExperience() + " / " + Level.getLevelExp(user.getLevel() + 1) + ")");
+
             ProgressBar simpleProgressBar = findViewById(R.id.simpleProgressBar);
             simpleProgressBar.setMax(100);
             simpleProgressBar.setProgress(playerProgressByPercentage());
@@ -99,22 +86,33 @@ public class ProfileActivity extends MyMenu {
             strengthProgressBar.setMax(100);
             strengthProgressBar.setProgress(categoryProgressByPercentage(strength));
 
+            ProgressBar staminaProgressBar = findViewById(R.id.staminaProgressBar);
+            staminaProgressBar.setMax(100);
+            staminaProgressBar.setProgress(categoryProgressByPercentage(stamina));
 
+            ProgressBar intelligenceBar = findViewById(R.id.intelligenceProgressBar);
+            intelligenceBar.setMax(100);
+            intelligenceBar.setProgress(categoryProgressByPercentage(intelligence));
+
+            ProgressBar socialBar = findViewById(R.id.socialProgressBar);
+            socialBar.setMax(100);
+            socialBar.setProgress(categoryProgressByPercentage(social));
 
     }
 
     public int playerProgressByPercentage(){
-        int myExp = player.getTotalExperience();
+        DBHelper dbHelper = new DBHelper(this);
+        Player user = Player.load(dbHelper, "James");
+        int myExp = user.getTotalExperience();
 
-        int currentExpNeeded = Level.getLevelExp(player.getLevel());
+        int currentExpNeeded = Level.getLevelExp(user.getLevel());
 
-        int nextLevelExp = Level.getLevelExp(player.getLevel() + 1);
+        int nextLevelExp = Level.getLevelExp(user.getLevel() + 1);
 
         double ratio = (1.0*myExp - currentExpNeeded) / (1.0*nextLevelExp - currentExpNeeded);
 
         return (int) (100 * ratio);
     }
-
 
     public int categoryProgressByPercentage(Category category){
         Integer categoryExp = category.getExp();

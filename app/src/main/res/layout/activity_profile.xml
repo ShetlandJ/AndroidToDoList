@@ -2,9 +2,123 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:background="@drawable/bgimg"
     tools:context="myfirstgame.todolist.ProfileActivity">
+
+    <TextView
+        android:id="@+id/socialEXP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/strengthProgressBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/socialProgressBar"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/socialProgressBar"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="S" />
+
+    <ProgressBar
+        android:id="@+id/socialProgressBar"
+        style="@style/tallerBarStyle"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/simpleProgressBar"
+        android:layout_weight="1"
+        android:maxHeight="20dip"
+        android:minHeight="20dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/intelligenceEXP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/strengthProgressBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/intelligenceProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/intelligenceProgressBar"
+        tools:text="I" />
+
+    <ProgressBar
+        android:id="@+id/intelligenceProgressBar"
+        style="@style/tallerBarStyle"
+        android:layout_width="100dp"
+        android:layout_height="50sp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/simpleProgressBar"
+        android:layout_weight="1"
+        android:maxHeight="20dip"
+        android:minHeight="20dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/staminaProgressBar" />
+
+    <TextView
+        android:id="@+id/staminaEXP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/strengthProgressBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/staminaProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/staminaProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/staminaProgressBar"
+        tools:text="S" />
+
+    <ProgressBar
+        android:id="@+id/staminaProgressBar"
+        style="@style/tallerBarStyle"
+        android:layout_width="100sp"
+        android:layout_height="50sp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/simpleProgressBar"
+        android:layout_weight="1"
+        android:maxHeight="20dip"
+        android:minHeight="20dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strengthProgressBar" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_alignStart="@+id/strengthProgressBar"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/strengthProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/strengthProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/strengthProgressBar"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/strength" />
 
     <ProgressBar
         android:id="@+id/strengthProgressBar"
@@ -14,28 +128,15 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="100dp"
         android:layout_toEndOf="@+id/simpleProgressBar"
         android:layout_weight="1"
         android:maxHeight="20dip"
         android:minHeight="20dip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/intelligenceExp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/strengthProgressBar"
-        android:layout_below="@+id/levelExp"
-        android:layout_marginBottom="8dp"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/simpleProgressBar"
-        tools:layout_editor_absoluteX="88dp"
-        tools:text="intelligence exp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ProgressBar
@@ -75,12 +176,12 @@
         android:layout_alignStart="@+id/strengthProgressBar"
         android:layout_centerVertical="true"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/strengthProgressBar"
         app:layout_constraintStart_toStartOf="@+id/strengthProgressBar"
         app:layout_constraintTop_toTopOf="@+id/strengthProgressBar"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/strength" />
 
     <TextView
@@ -96,6 +197,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/strengthProgressBar"
         app:layout_constraintEnd_toEndOf="@+id/strengthProgressBar"
         app:layout_constraintTop_toTopOf="@+id/strengthProgressBar"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="S" />
 
     <android.support.design.widget.BottomNavigationView
@@ -113,6 +215,54 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_main" />
+
+    <ImageView
+        android:id="@+id/staminaImage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/staminaProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/staminaProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/staminaProgressBar"
+        app:srcCompat="@drawable/stamina" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/intelligenceProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/intelligenceProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/intelligenceProgressBar"
+        app:srcCompat="@drawable/intelligence" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/socialProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/socialProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/socialProgressBar"
+        app:srcCompat="@drawable/social" />
+
+    <TextView
+        android:id="@+id/expNeeded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/simpleProgressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.342"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
