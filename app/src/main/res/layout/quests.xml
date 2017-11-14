@@ -27,11 +27,13 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="23dp"
         android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/soBlueItsBlack"
         android:clickable="true"
         android:onClick="onQuestAddButtonClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:focusable="true" />
 
 
     <android.support.design.widget.BottomNavigationView
@@ -39,9 +41,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/colorPrimaryDark"
-        app:itemTextColor="@color/colorAccent"
+        app:itemBackground="@color/progressBar"
+        app:itemIconTint="@color/progressBarBackground"
+        app:itemTextColor="@color/progressBarBackground"
         app:menu="@menu/bottom_navigation_main" />
 
     <Button
@@ -53,22 +55,14 @@
         android:text="Button" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/questsOfName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="18dp"
         android:layout_marginTop="13dp"
-        android:text="Quests of James!"
-        android:textSize="30sp" />
-
-    <TextView
-        android:id="@+id/levelUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_toStartOf="@+id/button"
-        android:text="TextView" />
+        android:textSize="45sp"
+        tools:text="Quests of name!" />
 
 </RelativeLayout>

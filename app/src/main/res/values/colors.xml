@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#009688</color>
-    <color name="colorPrimaryDark">#00695c</color>
+    <color name="colorPrimary">#F0CF30</color>
+    <color name="colorPrimaryDark">#B75418</color>
     <color name="colorAccent">#b2dfdb</color>
     <color name="progressBar">#F0CF30</color>
     <color name="progressBarTransparent50">#80F0CF30</color>
     <color name="progressBarBackground">#B75418</color>
+    <color name="soBlueItsBlack">#333333</color>
 </resources>

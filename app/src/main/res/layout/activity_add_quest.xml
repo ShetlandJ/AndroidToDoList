@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgimg"
     tools:context="myfirstgame.todolist.AddQuestActivity">
 
     <RadioGroup
@@ -61,7 +62,7 @@
     </RadioGroup>
 
 
-    <EditText
+    <myfirstgame.todolist.MyEditText
         android:id="@+id/questNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,7 +78,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <myfirstgame.todolist.MyEditText
         android:id="@+id/questDescInput"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
@@ -92,7 +93,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questNameInput" />
 
-    <EditText
+    <myfirstgame.todolist.MyEditText
         android:id="@+id/expValueInput"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
@@ -139,7 +140,7 @@
         app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <myfirstgame.todolist.MyTextView
         android:id="@+id/featText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

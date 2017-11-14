@@ -19,10 +19,10 @@ import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_DATE;
 
 public class AddQuestActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText editName;
-    EditText editDesc;
-    EditText editExpValue;
-    TextView featText;
+    MyEditText editName;
+    MyEditText editDesc;
+    MyEditText editExpValue;
+    MyTextView featText;
 
     RadioGroup radioGroupBtn;
     RadioButton strengthBtn;

@@ -7,7 +7,7 @@
     tools:context="myfirstgame.todolist.QuestViewAdapter"
     android:onClick="getQuest">
 
-    <TextView
+    <myfirstgame.todolist.MyTextView
         android:id="@+id/itemName"
         android:layout_width="232dp"
         android:layout_height="56dp"

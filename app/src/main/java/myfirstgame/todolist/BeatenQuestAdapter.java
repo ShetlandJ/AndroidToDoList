@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class BeatenQuestAdapter extends ArrayAdapter<Quest> {
 
+
         public BeatenQuestAdapter(Context context, ArrayList<Quest> quests){
             super(context, 0, quests);
         }
@@ -25,7 +26,7 @@ public class BeatenQuestAdapter extends ArrayAdapter<Quest> {
             }
             Quest currentQuest = getItem(position);
 
-            TextView itemName = listItemView.findViewById(R.id.beatenQuestName);
+            MyTextView itemName = listItemView.findViewById(R.id.beatenQuestName);
             itemName.setText(currentQuest.getName().toString());
 
             listItemView.setTag(currentQuest);

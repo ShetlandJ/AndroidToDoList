@@ -12,9 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/colorPrimaryDark"
-        app:itemTextColor="@color/colorAccent"
+        app:itemBackground="@color/progressBar"
+        app:itemIconTint="@color/progressBarBackground"
+        app:itemTextColor="@color/progressBarBackground"
         app:menu="@menu/bottom_navigation_main" />
 
     <ListView
@@ -26,13 +26,13 @@
         android:layout_marginTop="67dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/beatenQuestsHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Beaten Quests of James!"
-        android:textSize="30sp" />
+        android:text="Beaten Quests!"
+        android:textSize="40sp" />
 
 </RelativeLayout>

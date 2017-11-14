@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 public class ProfileActivity extends MyMenu {
 
-    TextView strengthExp;
-    TextView staminaExp;
-    TextView intelligenceExp;
-    TextView socialExp;
-    TextView levelOver;
-    TextView expNeeded;
+    MyTextView strengthExp;
+    MyTextView staminaExp;
+    MyTextView intelligenceExp;
+    MyTextView socialExp;
+    MyTextView levelOver;
+    MyTextView expNeeded;
 
 
     @Override

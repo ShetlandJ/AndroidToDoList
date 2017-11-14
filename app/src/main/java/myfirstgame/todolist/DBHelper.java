@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test69.db";
+    public static final String DATABASE_NAME = "test78db";
 
     //    Category table
 

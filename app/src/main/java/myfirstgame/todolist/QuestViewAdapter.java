@@ -5,9 +5,12 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
@@ -37,10 +40,9 @@ import static myfirstgame.todolist.DBHelper.PROFILE_TABLE_NAME;
 public class QuestViewAdapter extends ArrayAdapter<Quest> {
 
     Player player;
-    Category category;
     MediaPlayer mp;
 
-    public QuestViewAdapter(Context context, ArrayList<Quest> quests){
+    public QuestViewAdapter(Context context, ArrayList<Quest> quests) {
         super(context, 0, quests);
     }
 
@@ -48,14 +50,17 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.quest_item, parent, false);
         }
-        final Quest currentQuest = getItem(position);
+        Quest currentQuest = getItem(position);
 
-        TextView itemName = listItemView.findViewById(R.id.itemName);
-        itemName.setText(currentQuest.getName().toString());
+        MyTextView myTextView = listItemView.findViewById(R.id.itemName);
+        myTextView.setText(currentQuest.getName().toString());
         listItemView.setBackgroundResource(R.color.progressBarTransparent50);
 
 
         Button expValue = listItemView.findViewById(R.id.expValue);
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "americanTypwriterRegular.ttf");
+        expValue.setTypeface(font);
+
         expValue.setText(currentQuest.getExpValue().toString());
 
         final DBHelper dbHelper = new DBHelper(this.getContext());
@@ -67,23 +72,22 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         listItemView.setTag(currentQuest);
 
 
-
-        category = Category.load(dbHelper, currentQuest.showCategoryNameByNumber(currentQuest.getCategory()));
+//        category = Category.load(dbHelper, currentQuest.showCategoryNameByNumber(currentQuest.getCategory()));
 
 
         final View finalListItemView = listItemView;
         expValue.setOnLongClickListener(new View.OnLongClickListener() {
 
-                public boolean onLongClick(View v) {
-                    removeListItem(finalListItemView, currentQuest);
-                    longclick(dbHelper, currentQuest, player, category);
-                    notifyDataSetChanged();
-                    return true;
-                }
-            });
+            public boolean onLongClick(View v) {
+                Quest currentQuest = getItem(position);
+                removeListItem(finalListItemView, currentQuest);
+                longclick(dbHelper, currentQuest, player);
+                notifyDataSetChanged();
+                return true;
+            }
+        });
 
-            return listItemView;
-
+        return listItemView;
 
 
     }
@@ -91,7 +95,7 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
     protected void removeListItem(final View rowView, final Quest position) {
         final Animation animation = AnimationUtils.loadAnimation(
 
-        this.getContext(), R.anim.fadeout);
+                this.getContext(), R.anim.fadeout);
 //        rowView.startAnimation(animation);
         Handler handle = new Handler();
         handle.postDelayed(new Runnable() {
@@ -105,34 +109,41 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
 
     }
 
-    public void longclick(DBHelper dbHelper, Quest quest, Player player, Category category) {
+    public void longclick(DBHelper dbHelper, Quest quest, Player player) {
         quest.setCompleted(1);
         quest.update(dbHelper);
         switch (quest.getCategory()) {
             case 1:
                 player.setStrength(quest.getExpValue());
                 player.update(dbHelper);
-                category.setExp(quest.getExpValue());
-                category.setLevel();
-                category.update(dbHelper);
+                Category strength = Category.load(dbHelper, "Strength");
+                strength.setExp(quest.getExpValue());
+                strength.setLevel();
+                strength.update(dbHelper);
                 break;
             case 2:
                 player.setStamina(quest.getExpValue());
                 player.update(dbHelper);
-                category.setExp(quest.getExpValue());
-                category.update(dbHelper);
+                Category stamina = Category.load(dbHelper, "Stamina");
+                stamina.setExp(quest.getExpValue());
+                stamina.setLevel();
+                stamina.update(dbHelper);
                 break;
             case 3:
                 player.setIntelligence(quest.getExpValue());
                 player.update(dbHelper);
-                category.setExp(quest.getExpValue());
-                category.update(dbHelper);
+                Category intelligence = Category.load(dbHelper, "Intelligence");
+                intelligence.setExp(quest.getExpValue());
+                intelligence.setLevel();
+                intelligence.update(dbHelper);
                 break;
             case 4:
                 player.setSocial(quest.getExpValue());
                 player.update(dbHelper);
-                category.setExp(quest.getExpValue());
-                category.update(dbHelper);
+                Category social = Category.load(dbHelper, "Social");
+                social.setExp(quest.getExpValue());
+                social.setLevel();
+                social.update(dbHelper);
                 break;
         }
 
@@ -145,7 +156,7 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
 
         player.setLevel();
         player.update(dbHelper);
-//        remove(quest);
+
         Context context = this.getContext();
         CharSequence text = "Quest beaten!";
         int duration = Toast.LENGTH_SHORT;
@@ -153,14 +164,12 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         toast.show();
     }
 
-    public boolean hasLevelIncreased(){
+    public boolean hasLevelIncreased() {
         Integer currentLevel = player.getLevel();
         Integer newLevel = player.setLevel();
-        if (newLevel > currentLevel){
+        if (newLevel > currentLevel) {
             return true;
         }
         return false;
     }
-
-
 }

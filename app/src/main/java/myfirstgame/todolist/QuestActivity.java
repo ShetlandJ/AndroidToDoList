@@ -3,6 +3,8 @@ package myfirstgame.todolist;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,12 +16,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class QuestActivity extends MyMenu {
+
+    TextView header;
+    Typeface typeface;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -31,10 +37,17 @@ public class QuestActivity extends MyMenu {
         final DBHelper dbHelper = new DBHelper(this);
         ArrayList<Quest> questList = Quest.allIncomplete(dbHelper);
 
-
         final QuestViewAdapter questAdapter = new QuestViewAdapter(this, questList);
         final ListView listView = findViewById(R.id.questList);
         listView.setAdapter(questAdapter);
+
+        header = findViewById(R.id.questsOfName);
+        typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
+        header.setTypeface(typeface);
+        header.setTextColor(getResources().getColor(R.color.soBlueItsBlack, getResources().newTheme()));
+
+
+        header.setText("Quests of James:");
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
