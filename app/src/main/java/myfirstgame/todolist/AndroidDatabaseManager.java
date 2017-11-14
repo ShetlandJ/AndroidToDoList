@@ -32,7 +32,6 @@ import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import myfirstgame.todolist.DBHelper;
 
 public class AndroidDatabaseManager extends Activity implements OnItemClickListener {
 

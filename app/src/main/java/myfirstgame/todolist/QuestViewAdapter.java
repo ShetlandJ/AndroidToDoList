@@ -1,17 +1,7 @@
 package myfirstgame.todolist;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -19,23 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_ID;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_INTELLIGENCE_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_LEVEL;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_NAME;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_SOCIAL_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_STAMINA_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_STRENGTH_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_TABLE_NAME;
 
 public class QuestViewAdapter extends ArrayAdapter<Quest> {
 

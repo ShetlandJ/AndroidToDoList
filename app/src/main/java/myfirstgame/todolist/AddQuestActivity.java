@@ -1,6 +1,5 @@
 package myfirstgame.todolist;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -8,15 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
-
-import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_DATE;
 
 public class AddQuestActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,7 +27,6 @@ public class AddQuestActivity extends AppCompatActivity implements View.OnClickL
 
     DatePicker datepicker;
     Button addBtn;
-    Button cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

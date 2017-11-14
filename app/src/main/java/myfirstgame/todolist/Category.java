@@ -11,15 +11,6 @@ import static myfirstgame.todolist.DBHelper.CATEGORY_COLUMN_ID;
 import static myfirstgame.todolist.DBHelper.CATEGORY_COLUMN_LEVEL;
 import static myfirstgame.todolist.DBHelper.CATEGORY_COLUMN_NAME;
 import static myfirstgame.todolist.DBHelper.CATEGORY_TABLE_NAME;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_ID;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_INTELLIGENCE_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_LEVEL;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_NAME;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_SOCIAL_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_STAMINA_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_COLUMN_STRENGTH_EXP;
-import static myfirstgame.todolist.DBHelper.PROFILE_TABLE_NAME;
-
 
 /**
  * Created by James on 10/11/2017.

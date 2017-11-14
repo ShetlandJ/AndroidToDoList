@@ -6,7 +6,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 
 public class ProfileActivity extends MyMenu {

@@ -1,6 +1,5 @@
 package myfirstgame.todolist;
 
-import java.util.HashMap;
 
 /**
  * Created by James on 13/11/2017.

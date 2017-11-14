@@ -1,25 +1,18 @@
 package myfirstgame.todolist;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,9 +21,7 @@ public class QuestActivity extends MyMenu {
 
     TextView header;
     Typeface typeface;
-    BottomNavigationView bottomNavigationView;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,9 +70,6 @@ public class QuestActivity extends MyMenu {
             }
         });
 
-
-
-
         Button button = findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -92,11 +80,8 @@ public class QuestActivity extends MyMenu {
             }
         });
 
-
     }
-
-
-
+    
     public void onQuestAddButtonClicked(View button){
         FloatingActionButton fab = findViewById(R.id.addQuestBtn);
 
