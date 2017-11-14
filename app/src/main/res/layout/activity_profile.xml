@@ -13,23 +13,24 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/strengthProgressBar"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="8dp"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/socialProgressBar"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/socialProgressBar"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="S" />
 
     <ProgressBar
         android:id="@+id/socialProgressBar"
         style="@style/tallerBarStyle"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:layout_toEndOf="@+id/simpleProgressBar"
         android:layout_weight="1"
         android:maxHeight="20dip"
@@ -45,9 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/strengthProgressBar"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="12dp"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="@+id/intelligenceProgressBar"
@@ -57,7 +58,7 @@
     <ProgressBar
         android:id="@+id/intelligenceProgressBar"
         style="@style/tallerBarStyle"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="50sp"
         android:layout_centerVertical="true"
         android:layout_marginEnd="8dp"
@@ -68,7 +69,7 @@
         android:maxHeight="20dip"
         android:minHeight="20dip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/staminaProgressBar" />
 
@@ -90,11 +91,11 @@
     <ProgressBar
         android:id="@+id/staminaProgressBar"
         style="@style/tallerBarStyle"
-        android:layout_width="100sp"
+        android:layout_width="200sp"
         android:layout_height="50sp"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:layout_toEndOf="@+id/simpleProgressBar"
         android:layout_weight="1"
@@ -111,7 +112,7 @@
         android:layout_height="0dp"
         android:layout_alignStart="@+id/strengthProgressBar"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/strengthProgressBar"
@@ -123,11 +124,11 @@
     <ProgressBar
         android:id="@+id/strengthProgressBar"
         style="@style/tallerBarStyle"
-        android:layout_width="100sp"
+        android:layout_width="200sp"
         android:layout_height="50sp"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="100dp"
         android:layout_toEndOf="@+id/simpleProgressBar"
         android:layout_weight="1"
@@ -138,19 +139,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ProgressBar
         android:id="@+id/simpleProgressBar"
         style="@style/tallerBarStyle"
-        android:layout_width="200sp"
-        android:layout_height="50sp"
-        android:layout_marginBottom="68dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="72dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
         android:maxHeight="20dip"
         android:minHeight="20dip"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toStartOf="parent" />
 
     <myfirstgame.todolist.MyTextView
@@ -176,12 +177,11 @@
         android:layout_alignStart="@+id/strengthProgressBar"
         android:layout_centerVertical="true"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/strengthProgressBar"
         app:layout_constraintStart_toStartOf="@+id/strengthProgressBar"
         app:layout_constraintTop_toTopOf="@+id/strengthProgressBar"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/strength" />
 
     <myfirstgame.todolist.MyTextView
@@ -221,19 +221,16 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/staminaProgressBar"
         app:layout_constraintStart_toStartOf="@+id/staminaProgressBar"
         app:layout_constraintTop_toTopOf="@+id/staminaProgressBar"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/stamina" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/intelligenceProgressBar"
+        android:layout_width="54dp"
+        android:layout_height="46dp"
         app:layout_constraintStart_toStartOf="@+id/intelligenceProgressBar"
         app:layout_constraintTop_toTopOf="@+id/intelligenceProgressBar"
         app:srcCompat="@drawable/intelligence" />
@@ -243,11 +240,11 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/socialProgressBar"
         app:layout_constraintStart_toStartOf="@+id/socialProgressBar"
         app:layout_constraintTop_toTopOf="@+id/socialProgressBar"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/social" />
 
     <myfirstgame.todolist.MyTextView
@@ -264,5 +261,18 @@
         app:layout_constraintHorizontal_bias="0.342"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <myfirstgame.todolist.MyTextView
+        android:id="@+id/profileHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="header" />
 
 </android.support.constraint.ConstraintLayout>

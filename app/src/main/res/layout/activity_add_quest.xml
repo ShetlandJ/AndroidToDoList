@@ -64,72 +64,52 @@
 
     <myfirstgame.todolist.MyEditText
         android:id="@+id/questNameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="178dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="64dp"
+        android:gravity="top"
         android:background="@android:color/transparent"
         android:ems="10"
         android:hint="Do something..."
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <myfirstgame.todolist.MyEditText
-        android:id="@+id/questDescInput"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="Tell me a bit more"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questNameInput" />
-
-    <myfirstgame.todolist.MyEditText
         android:id="@+id/expValueInput"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
+        android:layout_width="109dp"
+        android:layout_height="38dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:hint="EXP value"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questDescInput" />
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toEndOf="@+id/questNameInput"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/saveQuestBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="addQuest"
         android:text="Add Quest"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectDate"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toEndOf="@+id/cancelButton" />
 
     <DatePicker
         android:id="@+id/selectDate"
-        android:layout_width="253dp"
-        android:layout_height="136dp"
-        android:layout_marginBottom="68dp"
+        android:layout_width="268dp"
+        android:layout_height="168dp"
+        android:layout_marginBottom="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:calendarViewShown="false"
@@ -137,22 +117,46 @@
         android:spinnersShown="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <myfirstgame.todolist.MyTextView
+        android:id="@+id/questFeatText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="This quest is a feat of:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGrp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questNameInput"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="76dp"
+        android:onClick="cancelAddQuest"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <myfirstgame.todolist.MyTextView
         android:id="@+id/featText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:gravity="center_vertical|start|start"
+        android:text="↓ select below"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/radioGrp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expValueInput"
-        tools:text="a feat of" />
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toEndOf="@+id/questFeatText" />
 
 </android.support.constraint.ConstraintLayout>

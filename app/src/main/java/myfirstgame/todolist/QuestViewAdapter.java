@@ -56,7 +56,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         myTextView.setText(currentQuest.getName().toString());
         listItemView.setBackgroundResource(R.color.progressBarTransparent50);
 
-
         Button expValue = listItemView.findViewById(R.id.expValue);
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "americanTypwriterRegular.ttf");
         expValue.setTypeface(font);
@@ -70,9 +69,6 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         player = Player.load(dbHelper, "James");
 
         listItemView.setTag(currentQuest);
-
-
-//        category = Category.load(dbHelper, currentQuest.showCategoryNameByNumber(currentQuest.getCategory()));
 
 
         final View finalListItemView = listItemView;

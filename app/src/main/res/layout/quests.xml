@@ -36,7 +36,17 @@
         android:focusable="true" />
 
 
-    <android.support.design.widget.BottomNavigationView
+    <!--<android.support.design.widget.BottomNavigationView-->
+        <!--android:id="@+id/bottom_navigation"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--app:itemBackground="@color/progressBar"-->
+        <!--app:itemIconTint="@color/progressBarBackground"-->
+        <!--app:itemTextColor="@color/progressBarBackground"-->
+        <!--app:menu="@menu/bottom_navigation_main" />-->
+
+    <myfirstgame.todolist.SelectableBottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +54,8 @@
         app:itemBackground="@color/progressBar"
         app:itemIconTint="@color/progressBarBackground"
         app:itemTextColor="@color/progressBarBackground"
-        app:menu="@menu/bottom_navigation_main" />
+        app:menu="@menu/bottom_navigation_main"/>
+
 
     <Button
         android:id="@+id/button"

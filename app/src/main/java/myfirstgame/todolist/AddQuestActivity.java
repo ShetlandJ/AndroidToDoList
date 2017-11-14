@@ -2,6 +2,7 @@ package myfirstgame.todolist;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,6 @@ import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_DATE;
 public class AddQuestActivity extends AppCompatActivity implements View.OnClickListener {
 
     MyEditText editName;
-    MyEditText editDesc;
     MyEditText editExpValue;
     MyTextView featText;
 
@@ -32,6 +32,7 @@ public class AddQuestActivity extends AppCompatActivity implements View.OnClickL
 
     DatePicker datepicker;
     Button addBtn;
+    Button cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,8 @@ public class AddQuestActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_add_quest);
 
         editName = findViewById(R.id.questNameInput);
-        editDesc = findViewById(R.id.questDescInput);
+        editName.setBackgroundResource(R.color.progressBarTransparent50);
+
         editExpValue = findViewById(R.id.expValueInput);
 
         // Radio buttons
@@ -60,11 +62,15 @@ public class AddQuestActivity extends AppCompatActivity implements View.OnClickL
         datepicker = findViewById(R.id.selectDate);
 
         featText = findViewById(R.id.featText);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
+        featText.setTypeface(typeface);
+        featText.setTextColor(getResources().getColor(R.color.progressBar, getResources().newTheme()));
+
     }
 
     public boolean showFeat(){
         if (strengthBtn.isChecked() || staminaBtn.isChecked() || intelligenceBtn.isChecked() || socialBtn.isChecked()) {
-            featText.setText("This quest is a feat of: " + showCategoryNameByNumber(checkedRadioButton(radioGroupBtn)));
+            featText.setText(showCategoryNameByNumber(checkedRadioButton(radioGroupBtn)));
         }
         return true;
     }
@@ -72,15 +78,19 @@ public class AddQuestActivity extends AppCompatActivity implements View.OnClickL
     public void addQuest(View button){
         DBHelper dbHelper = new DBHelper(this);
         String name = editName.getText().toString();
-        String description = editDesc.getText().toString();
         Integer expValue = Integer.parseInt(editExpValue.getText().toString());
 
         Integer categoryId = checkedRadioButton(radioGroupBtn);
         Date dueDate = getDateFromDatePicker(datepicker);
 
-        Quest quest = new Quest(name, description, expValue, categoryId, dueDate);
+        Quest quest = new Quest(name, expValue, categoryId, dueDate);
         quest.save(dbHelper);
 
+        Intent intent = new Intent(this, QuestActivity.class);
+        startActivity(intent);
+    }
+
+    public void cancelAddQuest(View button){
         Intent intent = new Intent(this, QuestActivity.class);
         startActivity(intent);
     }

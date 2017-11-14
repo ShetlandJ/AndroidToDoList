@@ -7,10 +7,12 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +28,7 @@ public class QuestActivity extends MyMenu {
 
     TextView header;
     Typeface typeface;
+    BottomNavigationView bottomNavigationView;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -49,7 +52,6 @@ public class QuestActivity extends MyMenu {
 
         header.setText("Quests of James:");
 
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()  {
             @Override
@@ -71,6 +73,8 @@ public class QuestActivity extends MyMenu {
         });
 
 
+
+
         Button button = findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +89,7 @@ public class QuestActivity extends MyMenu {
     }
 
 
+
     public void onQuestAddButtonClicked(View button){
         FloatingActionButton fab = findViewById(R.id.addQuestBtn);
 
@@ -96,7 +101,6 @@ public class QuestActivity extends MyMenu {
         Quest quest = (Quest) listItem.getTag();
         Intent i = new Intent(this, QuestItemActivity.class);
         i.putExtra("name", quest.getName());
-        i.putExtra("description", quest.getDescription());
         i.putExtra("expValue", quest.getExpValue().toString());
         i.putExtra("category", quest.showCategoryNameByNumber(quest.getCategory()));
         i.putExtra("date", quest.getDate());

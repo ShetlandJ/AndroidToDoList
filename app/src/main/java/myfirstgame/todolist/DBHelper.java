@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "test78db";
+    public static final String DATABASE_NAME = "test79.db";
 
     //    Category table
 
@@ -30,7 +30,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String QUEST_TABLE_NAME = "quests";
     public static final String QUEST_COLUMN_ID = "id";
     public static final String QUEST_COLUMN_NAME = "name";
-    public static final String QUEST_COLUMN_DESC = "description";
     public static final String QUEST_COLUMN_EXP = "expValue";
     public static final String QUEST_COLUMN_CATEGORY = "category";
     public static final String QUEST_COLUMN_DATE = "date";
@@ -57,7 +56,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + PROFILE_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, strength_exp INTEGER, stamina_exp INTEGER, intelligence_exp INTEGER, social_exp INTEGER, level INTEGER )");
 
         db.execSQL("CREATE TABLE " + CATEGORY_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, exp INTEGER, level INTEGER )");
-        db.execSQL("CREATE TABLE " + QUEST_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, description TEXT, expValue INTEGER, date INTEGER, completed INTEGER DEFAULT 0, category INTEGER NOT NULL, FOREIGN KEY (category) REFERENCES '+CATEGORY_TABLE_NAME+' (id))");
+        db.execSQL("CREATE TABLE " + QUEST_TABLE_NAME + "(id INTEGER primary key autoincrement NOT NULL, name TEXT, expValue INTEGER, date INTEGER, completed INTEGER DEFAULT 0, category INTEGER NOT NULL, FOREIGN KEY (category) REFERENCES '+CATEGORY_TABLE_NAME+' (id))");
 
         db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Strength', 0, 0 );");
         db.execSQL("INSERT INTO " + CATEGORY_TABLE_NAME + "('name', 'exp', 'level') VALUES ('Stamina', 0, 0 );");
@@ -67,19 +66,19 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + PROFILE_TABLE_NAME + "('name', 'strength_exp', 'stamina_exp', 'intelligence_exp', 'social_exp', 'level') VALUES ('James', 0, 0, 0, 0, 0 );");
 
 
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Drinks with friends', 'at Maggie Mays', '50', '25/05/2017', '0', '4');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('CodeClan course', 'do it', '300', '25/05/2017', '0', '3');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Cycling to Balloch', '40k!', '300', '25/05/2017', '0', '2');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', 'Weightlifting down The Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Drinks with friends', '50', '25/05/2017', '0', '4');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('CodeClan course', '300', '25/05/2017', '0', '3');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Cycling to Balloch', '300', '25/05/2017', '0', '2');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '25/05/2017', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '25/05/2017', '0', '1');");
 
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'description', 'expValue', 'date', 'completed', 'category') VALUES ('Shopping', 'going shopping', '50', '24/05/2017', '1', '4');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Shopping', '50', '24/05/2017', '1', '4');");
 
     }
 

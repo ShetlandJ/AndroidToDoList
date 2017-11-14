@@ -1,5 +1,6 @@
 package myfirstgame.todolist;
 
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 public class ProfileActivity extends MyMenu {
 
+    MyTextView header;
     MyTextView strengthExp;
     MyTextView staminaExp;
     MyTextView intelligenceExp;
@@ -32,8 +34,6 @@ public class ProfileActivity extends MyMenu {
         Category intelligence = Category.load(dbHelper, "Intelligence");
         Category social = Category.load(dbHelper, "Social");
 
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -54,7 +54,12 @@ public class ProfileActivity extends MyMenu {
             });
 
         Player user = Player.load(dbHelper, "James");
-        System.out.println(user);
+
+            header = findViewById(R.id.profileHeader);
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
+            header.setTypeface(typeface);
+            header.setTextColor(getResources().getColor(R.color.soBlueItsBlack, getResources().newTheme()));
+            header.setText("you_irl");
 
             strengthExp = findViewById(R.id.strengthEXP);
             strengthExp.setText(strength.getLevel().toString());
