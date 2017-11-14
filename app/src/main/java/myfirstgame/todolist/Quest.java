@@ -3,9 +3,12 @@ package myfirstgame.todolist;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.DatePicker;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_CATEGORY;
 import static myfirstgame.todolist.DBHelper.QUEST_COLUMN_COMPLETED;
@@ -27,10 +30,10 @@ public class Quest {
     private Integer expValue;
     private Integer category;
     private int isCompleted;
-    private String date;
+    private Date date;
     private int id;
 
-    public Quest(String name, String description, Integer expValue, Integer category, String date) {
+    public Quest(String name, String description, Integer expValue, Integer category, Date date) {
         this.name = name;
         this.description = description;
         this.expValue = expValue;
@@ -39,7 +42,7 @@ public class Quest {
         this.date = date;
     }
 
-    public Quest(int id, String name, String description, Integer expValue, Integer category, String date) {
+    public Quest(int id, String name, String description, Integer expValue, Integer category, Date date) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -71,7 +74,7 @@ public class Quest {
         return isCompleted;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -97,7 +100,7 @@ public class Quest {
         isCompleted = completed;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -132,6 +135,16 @@ public class Quest {
         return null;
     }
 
+    public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year = datePicker.getYear();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+        return calendar.getTime();
+    }
+
+
     public boolean save(DBHelper dbHelper) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -139,7 +152,7 @@ public class Quest {
         contentValues.put(QUEST_COLUMN_DESC, description);
         contentValues.put(QUEST_COLUMN_EXP, expValue);
         contentValues.put(QUEST_COLUMN_CATEGORY, category);
-        contentValues.put(QUEST_COLUMN_DATE, date);
+        contentValues.put(QUEST_COLUMN_DATE, date.getDate());
 
         db.insert(QUEST_TABLE_NAME, null, contentValues);
         return true;
@@ -155,10 +168,10 @@ public class Quest {
             String description = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DESC));
             Integer expValue = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_EXP));
             Integer category = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_CATEGORY));
-            String date = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DATE));
+            Long datelong = cursor.getLong(cursor.getColumnIndex(QUEST_COLUMN_DATE));
+            Date dueDate = new Date(datelong);
 
-
-            Quest quest = new Quest(id, name, description, expValue, category, date);
+            Quest quest = new Quest(id, name, description, expValue, category, dueDate);
             quests.add(quest);
         }
         cursor.close();
@@ -176,10 +189,10 @@ public class Quest {
             String description = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DESC));
             Integer expValue = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_EXP));
             Integer category = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_CATEGORY));
-            String date = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DATE));
+            Long datelong = cursor.getLong(cursor.getColumnIndex(QUEST_COLUMN_DATE));
+            Date dueDate = new Date(datelong);
 
-
-            Quest quest = new Quest(id, name, description, expValue, category, date);
+            Quest quest = new Quest(id, name, description, expValue, category, dueDate);
             quests.add(quest);
         }
         cursor.close();
@@ -197,10 +210,10 @@ public class Quest {
             String description = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DESC));
             Integer expValue = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_EXP));
             Integer category = cursor.getInt(cursor.getColumnIndex(QUEST_COLUMN_CATEGORY));
-            String date = cursor.getString(cursor.getColumnIndex(QUEST_COLUMN_DATE));
+            Long datelong = cursor.getLong(cursor.getColumnIndex(QUEST_COLUMN_DATE));
+            Date dueDate = new Date(datelong);
 
-
-            Quest quest = new Quest(id, name, description, expValue, category, date);
+            Quest quest = new Quest(id, name, description, expValue, category, dueDate);
             quests.add(quest);
         }
         cursor.close();
@@ -235,7 +248,7 @@ public class Quest {
         contentValues.put(QUEST_COLUMN_EXP, expValue);
         contentValues.put(QUEST_COLUMN_CATEGORY, category);
         contentValues.put(QUEST_COLUMN_COMPLETED, isCompleted);
-        contentValues.put(QUEST_COLUMN_DATE, date);
+        contentValues.put(QUEST_COLUMN_DATE, date.getDate());
 
         db.update(QUEST_TABLE_NAME, contentValues, QUEST_COLUMN_ID+"="+id, null);
         db.close();

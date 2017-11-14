@@ -122,11 +122,12 @@ public class Player {
         return getStrength() + getIntelligence() + getSocial() + getStamina();
     }
 
-    public void setLevel(){
+    public Integer setLevel(){
         Integer totalExperience = getTotalExperience();
         Integer levelCalc = (totalExperience / 1500);
         level = 1;
         level += levelCalc;
+        return getLevel();
     }
 
     public int progressByPercentage(){

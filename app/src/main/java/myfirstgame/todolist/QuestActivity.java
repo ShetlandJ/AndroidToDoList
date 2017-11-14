@@ -3,6 +3,7 @@ package myfirstgame.todolist;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -29,6 +30,7 @@ public class QuestActivity extends MyMenu {
 
         final DBHelper dbHelper = new DBHelper(this);
         ArrayList<Quest> questList = Quest.allIncomplete(dbHelper);
+
 
         final QuestViewAdapter questAdapter = new QuestViewAdapter(this, questList);
         final ListView listView = findViewById(R.id.questList);
