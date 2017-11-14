@@ -68,6 +68,8 @@ public class AddQuestActivity extends AppCompatActivity implements View.OnClickL
         return true;
     }
 
+
+
     public void addQuest(View button){
         DBHelper dbHelper = new DBHelper(this);
         String name = editName.getText().toString();
