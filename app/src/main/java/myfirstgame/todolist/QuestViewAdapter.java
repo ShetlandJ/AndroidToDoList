@@ -2,6 +2,8 @@ package myfirstgame.todolist;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -37,6 +40,9 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         Button expValue = listItemView.findViewById(R.id.expValue);
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "americanTypwriterRegular.ttf");
         expValue.setTypeface(font);
+
+        ImageView category = listItemView.findViewById(R.id.questImageView);
+        category.setImageResource(getDrawable(currentQuest));
 
         expValue.setText(currentQuest.getExpValue().toString() + "exp");
 
@@ -68,8 +74,8 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         final Animation animation = AnimationUtils.loadAnimation(
 
                 this.getContext(), R.anim.fadeout);
-                Handler handle = new Handler();
-                handle.postDelayed(new Runnable() {
+        Handler handle = new Handler();
+        handle.postDelayed(new Runnable() {
 
             public void run() {
                 rowView.startAnimation(animation);
@@ -140,4 +146,18 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         }
         return false;
     }
+
+    public Integer getDrawable(Quest quest) {
+        if (quest.getCategory() == 1) {
+            return R.drawable.strength;
+        } else if (quest.getCategory() == 2) {
+            return R.drawable.stamina;
+        } else if (quest.getCategory() == 3) {
+            return R.drawable.intelligence;
+        } else if (quest.getCategory() == 4) {
+            return R.drawable.social;
+        }
+        return null;
+    }
+
 }

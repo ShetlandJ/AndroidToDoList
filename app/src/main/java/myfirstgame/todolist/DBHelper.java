@@ -65,7 +65,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + PROFILE_TABLE_NAME + "('name', 'strength_exp', 'stamina_exp', 'intelligence_exp', 'social_exp', 'level') VALUES ('James', 0, 0, 0, 0, 0 );");
 
 
-        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '300', '1510737479', '0', '1');");
+        db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Gym', '200', '1510737479', '0', '1');");
         db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Drinks with friends', '50', '1510743305', '0', '4');");
         db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('CodeClan course', '300', '1510743305', '0', '3');");
         db.execSQL("INSERT INTO " + QUEST_TABLE_NAME + "('name', 'expValue', 'date', 'completed', 'category') VALUES ('Cycling to Balloch', '300', '1510743305', '0', '2');");
