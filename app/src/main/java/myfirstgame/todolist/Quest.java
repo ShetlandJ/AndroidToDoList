@@ -139,7 +139,7 @@ public class Quest {
         contentValues.put(QUEST_COLUMN_NAME, name);
         contentValues.put(QUEST_COLUMN_EXP, expValue);
         contentValues.put(QUEST_COLUMN_CATEGORY, category);
-        contentValues.put(QUEST_COLUMN_DATE, date.getDate());
+        contentValues.put(QUEST_COLUMN_DATE, date.getTime());
 
         db.insert(QUEST_TABLE_NAME, null, contentValues);
         return true;

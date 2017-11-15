@@ -1,16 +1,21 @@
 package myfirstgame.todolist;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class QuestItemActivity extends AppCompatActivity {
 
-    TextView name;
-    TextView description;
-    TextView expValue;
-    TextView category;
-    TextView date;
+    MyEditText name;
+    MyTextView expValue;
+    MyTextView category;
+    MyTextView date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +24,12 @@ public class QuestItemActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String questName = extras.getString("name");
-        String questDescription = extras.getString("description");
         String questExpValue = extras.getString("expValue");
         String questCategory = extras.getString("category");
-        String questDate = extras.getString("date");
+        Long questDate = extras.getLong("date");
+
         name = findViewById(R.id.nameViews);
         name.setText(questName);
-
-        description = findViewById(R.id.descriptionView);
-        description.setText(questDescription);
 
         expValue = findViewById(R.id.expView);
         expValue.setText(questExpValue);
@@ -36,7 +38,27 @@ public class QuestItemActivity extends AppCompatActivity {
         category.setText("This is a feat of: " + questCategory);
 
         date = findViewById(R.id.dateView);
-        date.setText(questDate);
-
+        date.setText(toDate(questDate));
     }
+
+    private String toDate(Long timestamp) {
+        Date date = new Date(Long.parseLong(String.valueOf(timestamp)));
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd MMMM yyyy");
+        return sdf.format( date );
+    }
+
+    public void backToHome(View button){
+        Intent intent = new Intent(this, QuestActivity.class);
+        startActivity(intent);
+    }
+
+    public void deleteQuest(View button){
+        Bundle extras = getIntent().getExtras();
+        Integer id = extras.getInt("id");
+        DBHelper dbHelper = new DBHelper(this);
+        Quest.delete(dbHelper, id);
+        Intent intent = new Intent(this, QuestActivity.class);
+        startActivity(intent);
+    }
+
 }

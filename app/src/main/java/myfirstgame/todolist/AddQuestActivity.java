@@ -76,6 +76,7 @@ public class AddQuestActivity extends AppCompatActivity implements View.OnClickL
         Integer expValue = Integer.parseInt(editExpValue.getText().toString());
 
         Integer categoryId = checkedRadioButton(radioGroupBtn);
+
         Date dueDate = getDateFromDatePicker(datepicker);
 
         Quest quest = new Quest(name, expValue, categoryId, dueDate);

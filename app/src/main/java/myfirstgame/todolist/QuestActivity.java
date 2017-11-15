@@ -88,7 +88,7 @@ public class QuestActivity extends MyMenu {
         i.putExtra("name", quest.getName());
         i.putExtra("expValue", quest.getExpValue().toString());
         i.putExtra("category", quest.showCategoryNameByNumber(quest.getCategory()));
-        i.putExtra("date", quest.getDate());
+        i.putExtra("date", quest.getDate().getTime());
         startActivity(i);
     }
 
