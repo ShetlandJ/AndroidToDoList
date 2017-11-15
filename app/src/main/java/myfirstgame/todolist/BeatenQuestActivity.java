@@ -28,6 +28,7 @@ public class BeatenQuestActivity extends MyMenu {
         ListView listView = findViewById(R.id.beatenQuests);
         listView.setAdapter(questAdapter);
 
+
         header = findViewById(R.id.beatenQuestsHeader);
         typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
         header.setTypeface(typeface);

@@ -28,6 +28,8 @@ public class BeatenQuestAdapter extends ArrayAdapter<Quest> {
             itemName.setText(currentQuest.getName().toString());
 
             listItemView.setTag(currentQuest);
+            listItemView.setBackgroundResource(R.color.progressBarTransparent50);
+
 
             return listItemView;
         }

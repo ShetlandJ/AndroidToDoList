@@ -32,7 +32,7 @@ public class QuestItemActivity extends AppCompatActivity {
         name.setText(questName);
 
         expValue = findViewById(R.id.expView);
-        expValue.setText(questExpValue);
+        expValue.setText(questExpValue + "exp");
 
         category = findViewById(R.id.categoryView);
         category.setText("This is a feat of: " + questCategory);
@@ -60,5 +60,4 @@ public class QuestItemActivity extends AppCompatActivity {
         Intent intent = new Intent(this, QuestActivity.class);
         startActivity(intent);
     }
-
 }

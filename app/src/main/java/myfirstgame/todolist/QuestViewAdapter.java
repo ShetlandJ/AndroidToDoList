@@ -38,7 +38,7 @@ public class QuestViewAdapter extends ArrayAdapter<Quest> {
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "americanTypwriterRegular.ttf");
         expValue.setTypeface(font);
 
-        expValue.setText(currentQuest.getExpValue().toString());
+        expValue.setText(currentQuest.getExpValue().toString() + "exp");
 
         final DBHelper dbHelper = new DBHelper(this.getContext());
 
