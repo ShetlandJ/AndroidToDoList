@@ -19,8 +19,8 @@ public class TestQuest {
 
     @Before
     public void setUp() throws Exception {
-        date = new SimpleDateFormat("d MMMM, yyyy");
-        quest = new Quest("Go to the Gym", "Do Yoga and weightlifting", 100, 1, date.toString());
+//        date = new SimpleDateFormat("d MMMM, yyyy");
+//        quest = new Quest("Go to the Gym", "Do Yoga and weightlifting", 100, 1, date.toString());
     }
 
     @Test

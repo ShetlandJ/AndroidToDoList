@@ -124,7 +124,6 @@ public class ProfileActivity extends MyMenu {
         Integer categoryExp = category.getExp();
 
         int currentExpNeeded = Level.getCategoryLevelExp(category.getLevel());
-
         int nextLevelExp = Level.getCategoryLevelExp(category.getLevel() + 1);
 
         double ratio = (1.0*categoryExp - currentExpNeeded) / (1.0*nextLevelExp - currentExpNeeded);

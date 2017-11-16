@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 
 public class MyTextView extends android.support.v7.widget.AppCompatTextView {
 
-
     public MyTextView(Context context) {
         super(context);
         Typeface face=Typeface.createFromAsset(context.getAssets(), "americanTypwriterRegular.ttf");

@@ -37,8 +37,8 @@ public class QuestActivity extends MyMenu {
         typeface = Typeface.createFromAsset(getAssets(), "Metalista.otf");
         header.setTypeface(typeface);
         header.setTextColor(getResources().getColor(R.color.soBlueItsBlack, getResources().newTheme()));
-
         header.setText("Quests of James:");
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setItemIconTintList(null);
