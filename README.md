@@ -19,6 +19,6 @@ Users should also be able to mark tasks as completed.
 
 # Screenshots
  
-<img src="https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc1.png" alt="RPG to-do list homepage" style="width: 200px;"/>
+<img src="https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc1.png" alt="RPG to-do list homepage" style="width: 100px;"/>
 
-![alt text](https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc2.png "RPG to-do list profile page" =250x)
+<img src="https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc2.png" alt="RPG to-do list profile page" style="width: 100px;"/>
