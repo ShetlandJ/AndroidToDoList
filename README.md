@@ -16,3 +16,11 @@ Users should also be able to mark tasks as completed.
 
 * Allow the user to prioritise and/or categorise tasks
 * Use the calendar to set due dates on tasks.
+
+# Screenshots
+
+Inline-style: 
+![alt text](https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc1.png "RPG to-do list homepage")
+
+Inline-style: 
+![alt text](https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc2.png "RPG to-do list profile page")
