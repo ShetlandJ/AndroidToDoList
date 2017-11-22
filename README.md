@@ -18,9 +18,7 @@ Users should also be able to mark tasks as completed.
 * Use the calendar to set due dates on tasks.
 
 # Screenshots
+ 
+<img src="https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc1.png" alt="RPG to-do list homepage" style="width: 200px;"/>
 
-Inline-style: 
-![alt text](https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc1.png "RPG to-do list homepage" =250x)
-
-Inline-style: 
 ![alt text](https://github.com/ShetlandJ/AndroidToDoList/blob/master/sc2.png "RPG to-do list profile page" =250x)
